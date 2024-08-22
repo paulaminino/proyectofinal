@@ -61,6 +61,7 @@ nav a {
   font-weight: bold;
   display: inline-block; /* A MODIFICAR : Asegura que el precio se comporte como un bloque en línea */
   width: 20%;
+  background-color: #F09100;
 }
 
 #etiqueta1  {
