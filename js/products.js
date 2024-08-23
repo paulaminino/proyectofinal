@@ -21,7 +21,7 @@ function showData (dataArray) {
                 textodiv.appendChild(descrip);
                 let costo = document.createElement("div");
                 costo.className = "precio";
-                costo.appendChild(document.createTextNode(item.currency + item.cost));
+                costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
                 textodiv.appendChild(costo);
                 let cantVend = document.createElement("div");
                 cantVend.className = "nota";
