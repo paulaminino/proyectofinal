@@ -13,7 +13,13 @@ nav a {
   text-decoration: none;
 }
 
-/* código Eugenia para products.html*/
+/* código para products.html*/
+
+.headercategoria {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid #FFA500; /* Línea inferior con el color del botón */
+}
 
 .catalogo {
   padding: 0 90px; /* Margen a los lados de la pantalla */
@@ -25,7 +31,7 @@ nav a {
   align-items: center; /* Alinea verticalmente el contenido al centro */
   width: 100%; /* Cada producto ocupa todo el ancho disponible dentro de .catalogo */
   padding: 16px; /* Espacio interno entre el contenido y el borde */
-  display: flex; /* A MODIFICAR */
+  display: flex; 
 }
 
 .producto img {
@@ -40,53 +46,39 @@ nav a {
   font-weight: regular;
   margin: 0 0 4px;
   width: 100%;
-  display: inline-block; /* A MODIFICAR */
-  flex-direction: column; /* A MODIFICAR Alinea el texto en una columna */
-  justify-content: flex-start; /* A MODIFICAR */
+  display: inline-block;
+  flex-direction: column; Alinea el texto en una columna */
+  justify-content: flex-start; 
 }
 
 .producto .descripcion {
   font-size: 16px; /* Tamaño de fuente para la descripción del producto */
-  color: #212529; /* Color gris medio para el texto de la descripción */
+  color: #212529; /* Color gris */
   width: 100%;
-  display: inline-block; /* A MODIFICAR */
+  display: inline-block; 
 }
 
 .producto .precio {
-  padding: 10px; /* Espacio interno alrededor del texto del precio */
+  padding: 10px 30px; /* Espacio interno alrededor del texto del precio */
   border-radius: 4px; /* Bordes redondeados en el contenedor del precio */
-  font-size: 16px; /* Tamaño de fuente para el texto del precio */
-  color: #ffffff; /* Color gris oscuro para el texto del precio */
+  font-size: 16px; 
+  color: #ffffff; 
   margin-bottom: 10px; /* Espacio inferior entre el precio y la nota */
   font-weight: bold;
-  display: inline-block; /* A MODIFICAR : Asegura que el precio se comporte como un bloque en línea */
-  width: 20%;
+  display: inline-block; /* bloque en línea */
   background-color: #F09100;
-}
-
-#etiqueta1  {
-  background-color: #5EBCDD;
-  } 
-
-#etiqueta2  {
-    background-color: #DD7C5E;
-  } 
-
-  #etiqueta3  {
-    background-color: #DDD25E;
-    } 
+  box-shadow: 0px 2px 3px #738291;
+  margin: 20px 0px;
   
-  #etiqueta4  {
-      background-color: #B01018;
-    } 
+}
   
 .producto .nota {
-  font-size: 12px; /* Tamaño de fuente cantidad de artículos */
+  font-size: 12px; /* Tamaño de fuente para cantidad de artículos */
   color: #999; /* Color gris claro */
-  display: flex; /* A MODIFICAR */
+  display: flex; 
 }
 
-/* Fin código Eugenia para products.html*/
+/* Fin código para products.html*/
 
 .bd-placeholder-img {
   font-size: 1.125rem;
