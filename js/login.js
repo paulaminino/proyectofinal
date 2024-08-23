@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 function redirect() {
-    location.replace("http://127.0.0.1:5501/index.html")
+    window.location.href = "index.html";
 }
 
 const boton = document.getElementById("ingresoBtn");
