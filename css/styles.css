@@ -71,6 +71,10 @@ nav a {
   margin: 20px 0px;
   
 }
+
+#nom_usuario {
+  color:white;
+}
   
 .producto .nota {
   font-size: 12px; /* Tamaño de fuente para cantidad de artículos */
