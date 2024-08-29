@@ -7,10 +7,14 @@ function showData (dataArray) {
     for (const item of dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
+        prod.classList.add ("row");
             let imagen = document.createElement ("img");
+            imagen.className = "img";
+            imagen.classList.add ("col-lg-4");
             imagen.src = item.image;
             prod.appendChild(imagen);
             let textodiv = document.createElement("div");
+            textodiv.classList.add ("col-lg-7");
                 let nombre = document.createElement("div");
                 nombre.className = "nombreproducto";
                 nombre.appendChild(document.createTextNode(item.name));
