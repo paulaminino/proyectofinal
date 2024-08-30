@@ -12,6 +12,7 @@ let InputPassword = document.getElementById("password1");
 function validacion (){
     if (InputUsuario.value.length>0 && InputPassword.value.length>0){
     sessionStorage.setItem("sesion", true);
+    localStorage.setItem("usuario", InputUsuario.value);  /*Guardo usuario en memoria local ENTREGA 2 */
     return true;
 
     } else{
