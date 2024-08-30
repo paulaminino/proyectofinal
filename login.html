@@ -18,33 +18,33 @@
     <div class="container">
       <!--<div class="alert alert-danger text-center" role="alert"> Fondo rojo de alerta-->
         <!--<h4 class="alert-heading">Funcionalidad en desarrollo</h4> Letra de alerta que muestra en página-->
-      </div>
-    <div id="div_img_login">  <!--modifiqué para que sea un nombre de id más específico-->
-      <img src="img/login_transparente.png" id = "img_login"> <!--cambié la imagen por la de login transparente y le agregué id-->
+    <div id="div_img_login" class="row">  <!--modifiqué para que sea un nombre de id más específico-->
+      <img src="img/login_transparente.png" id ="img_login" class="col-lg-7 mx-auto d-block" > <!--cambié la imagen por la de login transparente y le agregué id-->
     </div>
     
     
-    <h1 class="registro">Registro</h1>
+    <h1 class="registro text-center">Registro</h1>
     <div class="formulario_login">
-        <div>
-        <label for="usuario" class="form-label">Usuario</label>
+        <div class="container align-self-center">
+        <label for="usuario" class="form-label" >Usuario</label>
          <input type="text" class="form-control" id="usuario">
          </div>
-         <div>
+         <div class="container align-self-center">
           <label for="password1" class="form-label">Contraseña</label>
           <input type="password" class="form-control" id="password1">
          </div>
-         <div id="button">
-          <button class="btn primary" type="button" id="ingresoBtn">Ingresar</button>
+         <div id="button" class="container">
+          <button class="btn" type="button" id="ingresoBtn">Ingresar</button>
          </div>
     </div>
   </main>
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end"><a href="#">Volver arriba</a></p>
-      <p class="float-start">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p class="float-end d-none d-sm-block"><a href="#">Volver arriba</a></p>
+      <p class="float-start text-center">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+</div>
   <script src="js/login.js"></script>
 </body>
 
