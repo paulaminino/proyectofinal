@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  <script src="js/product-info.js" defer></script>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -31,6 +32,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <span class="nav-link" id="nom_usuario"></span> <!-- Nombre Usuario en Barra: ENTREGA 2-->
           </li>
         </ul>
       </div>
@@ -41,6 +43,9 @@
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
+    </div>
+
+    <div id="div_contenedorTodo"> <!-- NECESARIO PARA LEER JSON, TODA LA INFO LA PONE ADENTRO-->
     </div>
   </main>
   <footer class="text-muted">

@@ -8,6 +8,7 @@ function showData (dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
+        prod.addEventListener('click', () => setProdID(item.id));
             let imagen = document.createElement ("img");
             imagen.className = "img";
             imagen.classList.add ("col-lg-4");
@@ -69,3 +70,12 @@ if (sessionStorage.getItem("sesion")) {
   document.getElementById("nom_usuario").innerHTML = nombre;
 }
 /*FIN Nombre Usuario en Barra: ENTREGA 2*/
+
+
+/*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
+/*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
+
