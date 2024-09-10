@@ -36,7 +36,11 @@ function showData (item) {
                 let descrip = document.createElement("div");
                 descrip.className = "descripcion";      /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
                 descrip.appendChild(document.createTextNode(item.description));
-                textodiv.appendChild(descrip);          
+                textodiv.appendChild(descrip);
+                let cat = document.createElement("div");
+                cat.className = "cat";             /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+                cat.appendChild(document.createTextNode(item.category));
+                textodiv.appendChild(cat);          
                 let costo = document.createElement("div");
                 costo.className = "precio";             /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
                 costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
