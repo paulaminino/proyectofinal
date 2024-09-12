@@ -6,8 +6,8 @@ if (sessionStorage.getItem("sesion")) {
 /*FIN Nombre Usuario en Barra: ENTREGA 2*/
 
 /*INICIO leectura JSON*/
-let categoria = localStorage.getItem("catID");
-const DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+let ID_PROD = localStorage.getItem("prodID");
+const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
 
 
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
@@ -69,30 +69,27 @@ function showData (item) {
               tituloimagenes.className = "tituloproducto"
               tituloimagenes.appendChild(document.createTextNode("Imágenes ilustrativas:"));
               textodiv.appendChild(tituloimagenes); 
-
-
-          let imagen = document.createElement ("img");
-          imagen.className = "imgprod";                      
-          imagen.src = item.image;
-          prod.appendChild(imagen);
+     // imagenes.className = "galeria";                       /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+          
+          for (let i of item.images){
+              let imagen = document.createElement ("img");
+              imagen.className = "imgprod";                          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+              imagen.src = i;
+              prod.appendChild(imagen);
+          }
+     // prod.appendChild(textodiv);
+      /*FIN BLOQUE IMÁGEN*/          
       contenedorTodo.appendChild(prod);
 }
 
-function prodSeleccionado (dataArray) {
-  let id = localStorage.getItem("prodID");
-  for (const item of dataArray) {
-      if (item.id == id){
-          return item;
-      }
-}
-}
+
 
 function respuesta (response) {
   return response.json();
 }
 
 function datos (data) {
-  return showData (prodSeleccionado (data.products));
+  return showData (data);
 }
 
 function esError(error){
