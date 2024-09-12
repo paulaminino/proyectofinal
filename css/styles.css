@@ -82,7 +82,36 @@ nav a {
   display: flex; 
 }
 
-/* Fin código para products.html*/
+/* Código para products-info.html---------------------------------------*/
+
+
+.nombreproductos {
+  font-size: 25px;
+}
+
+.tituloproducto {
+  font-weight: bold;
+  font-size: 17px;
+  margin-top: 1em;
+
+}
+
+.productocatego {
+  padding: 3% 15%;
+  font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+  color: #212529; /* Color gris */
+  width: 100%; 
+}
+
+.imgprod  {
+  margin-top: 5em;
+}
+
+
+/* ------------------ */
+
+
+
 
 .bd-placeholder-img {
   font-size: 1.125rem;
