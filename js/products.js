@@ -61,13 +61,43 @@ function mostrarProductos () {
   .catch(esError);
 }
 
+let orden = '';
 
+function empty (padre) {
+  while (padre.firstChild){
+    padre.firstChild.remove ();
+  }
+}
+function ocultarActual () {
+  empty (contenedor);
+}
+
+function ordena (data){
+  if (orden == 'asc'){
+    data.products.sort((a, b) => a.cost - b.cost);
+    console.log (data.products);
+  } else if (orden == 'desc'){
+    data.products.sort((a, b) => b.cost - a.cost);
+    console.log (data.products);
+  }
+  ocultarActual ();
+  return (showData(data.products));
+}
 function ordenasc () {
- return datos.sort((a, b) => a.cost - b.cost);
+ orden = 'asc';
+ ordenarProductos ();
 } 
 
 function ordendesc () {
-  return datos.sort((a, b) => b.cost - a.cost);
+ orden = 'desc';
+ ordenarProductos();
+}
+
+function ordenarProductos () {
+  fetch(DATA_URL)
+  .then(respuesta)
+  .then(ordena)
+  .catch(esError);
 }
 
 //Botón para ordenar asc:
