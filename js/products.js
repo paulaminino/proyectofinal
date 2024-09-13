@@ -1,6 +1,7 @@
-const DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL que contiene los datos que queremos mostrar
+let DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL que contiene los datos que queremos mostrar
 
-const contenedor  = document.getElementById("c_autos");
+let contenedor  = document.getElementById("c_autos");
+
 
 
 function showData (dataArray) {
@@ -39,12 +40,16 @@ function showData (dataArray) {
     }
   }
 
+
+    
+
+  }
+
 function respuesta (response) {
   return response.json();
 }
 
 function datos (DATA_URL) {
-  console.log(DATA_URL);
   return showData (DATA_URL.products);
   
 }
@@ -74,11 +79,7 @@ document.getElementById("sortAsc").addEventListener("click", ordenasc);
 // Boton para ordenar desc:
 document.getElementById("sortDesc").addEventListener("click", ordendesc);
 
-// Botón para limpiar:
-document.getElementById("clearRangeFilter").addEventListener("click", function(){
-  document.getElementById("rangeFilterCountMin").value = "";
-  document.getElementById("rangeFilterCountMax").value = "";
-});
+
 
 
 
