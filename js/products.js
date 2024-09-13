@@ -79,6 +79,9 @@ function ordena (data){
   } else if (orden == 'desc'){
     data.products.sort((a, b) => b.cost - a.cost);
     console.log (data.products);
+  } else if (orden == 'relev'){
+    data.products.sort((a, b) => b.soldCount - a.soldCount);
+    console.log (data.products);
   }
   ocultarActual ();
   return (showData(data.products));
@@ -93,6 +96,11 @@ function ordendesc () {
  ordenarProductos();
 }
 
+function ordenrelev() {
+  orden = 'relev';
+  ordenarProductos();
+}
+
 function ordenarProductos () {
   fetch(DATA_URL)
   .then(respuesta)
@@ -104,13 +112,11 @@ function ordenarProductos () {
 document.getElementById("sortAsc").addEventListener("click", ordenasc);
 // Boton para ordenar desc:
 document.getElementById("sortDesc").addEventListener("click", ordendesc);
-
-
-
+// Botón para ordenar por relevancia:
+document.getElementById("sortByCount").addEventListener("click", ordenrelev);
 
 
 mostrarProductos();
-
 
 /*INICIO Nombre Usuario en Barra: ENTREGA 2*/
 if (sessionStorage.getItem("sesion")) {

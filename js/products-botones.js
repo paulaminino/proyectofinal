@@ -28,9 +28,6 @@ function ocultarActual () {
   
 }
 
-
-
-
 function mostrarFiltrado () {
   
   Mostrar();
@@ -54,11 +51,6 @@ if (activacionFiltro){
   arreglo = filtrarArreglo(dataArray);
 }
   
- /* if (activacionFiltro) {
-    let minprecio = document.getElementById("rangeFilterCountMin").value; // Definiendo una variable que tiene adentro el rango menor.
-    let maxprecio = document.getElementById("rangeFilterCountMax").value; // Definiendo una variable que tiene adentro el rango mayor.
-    arreglo = arreglo.filter(function(x){ return x.cost >= minprecio && x.cost <= maxprecio});
-    }*/
      for (let item of arreglo) {
       
         let prod = document.createElement("div");
@@ -93,8 +85,7 @@ if (activacionFiltro){
         contenedor.appendChild(linea);
     }
   }
-    
-
+  
 
 function respuesta (response) {
   return response.json();
@@ -117,24 +108,6 @@ function Mostrar () {
   .catch(esError);
 }
 }
-
- //Filtrando por rango menor y mayor.
-
- //DATA_URL.products.filter(function(x){ return x.cost >= 14000 && x.cost <= 35000});
-
-
-
-//function ordenar (){
-//  const ordenarRelevancia = (products, ascendente = true) => {
-//  return products.sort((a, b) => ascendente ? a.soldCount - b.soldCount : b.soldCount - a.soldCount)};
-
-//} 
-// Botón para filtrar:
-
-
-//Botón para ordenar:
-//document.getElementById("sortAsc").addEventListener("click", ordenar = true);
-//document.getElementById("sortDesc").addEventListener("click", ordenar = false);
 
 // Botón para limpiar:
 function desfiltrar (){
