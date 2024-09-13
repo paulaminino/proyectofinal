@@ -40,8 +40,6 @@ function showData (dataArray) {
 
 }
 
-
-
 function respuesta (response) {
   return response.json();
 }
@@ -62,6 +60,30 @@ function mostrarProductos () {
 }
 
 mostrarProductos();
+
+// Desafiate busqueda ____________________________________
+
+const buscador = document.getElementById('buscador');
+
+// Añadir evento de búsqueda
+
+buscador.addEventListener('input', function() {
+    const textoBusqueda = this.value.toLowerCase();
+    const productos = document.querySelectorAll('.producto'); // Selecciona todos los productos
+
+    // Filtrar productos según el texto ingresado
+    productos.forEach(function(producto) {
+        const titulo = producto.querySelector('.nombreproducto').textContent.toLowerCase();
+        const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
+
+        // Mostrar u ocultar el producto según si coincide con el título o la descripción
+        if (titulo.includes(textoBusqueda) || descripcion.includes(textoBusqueda)) {
+            producto.style.display = 'block';  // Mostrar producto
+        } else {
+            producto.style.display = 'none';  // Ocultar producto
+        }
+    });
+});
 
 
 /*INICIO Nombre Usuario en Barra: ENTREGA 2*/
