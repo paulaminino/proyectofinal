@@ -35,6 +35,7 @@ function showData (dataArray) {
             prod.appendChild(textodiv);
         contenedor.appendChild(prod);
         let linea = document.createElement("hr");
+        linea.className = "lineaH";
         contenedor.appendChild(linea);
     }
 
@@ -66,17 +67,27 @@ mostrarProductos();
 // Selecciona el campo de texto y el botón de búsqueda
 const buscador = document.getElementById('buscador'); //Llamar al elemento id "buscador" del imput type en products.html
 const botonBuscar = document.getElementById('buscar');
+let lineas = document.getElementsByClassName ('lineaH');
+
+function sacarLineas (padre, hijo) {
+  for (let i of hijo){
+    padre.removeChild (i);
+  }
+}
+function ocultarLineas () {
+  sacarLineas (contenedor, lineas);
+}
 
 
 function realizarBusqueda() { // Función para realizar la búsqueda
     const textoBusqueda = buscador.value.toLowerCase(); // Obtiene el texto del campo de búsqueda
     const productos = document.querySelectorAll('.producto'); // Selecciona todos los productos del array
-
+    ocultarLineas ();
     // Filtrar productos según el texto ingresado
     productos.forEach(function(producto) {
         const titulo = producto.querySelector('.nombreproducto').textContent.toLowerCase();
         const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
-
+        
         // Mostrar u ocultar el producto, según si coincide con el título o la descripción
         if (titulo.includes(textoBusqueda) || descripcion.includes(textoBusqueda)) {
             producto.style.display = 'block';  // Mostrar producto
@@ -84,6 +95,7 @@ function realizarBusqueda() { // Función para realizar la búsqueda
             producto.style.display = 'none';  // Ocultar producto
         }
     });
+  
 }
 
 // Evento cuando el usuario escribe - no necesario
