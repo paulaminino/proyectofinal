@@ -4,14 +4,7 @@ const contenedor  = document.getElementById("c_autos");
 
 
 function showData (dataArray) {
-  let arreglo = dataArray
-  if (document.getElementById("rangeFilterCount").addEventListener("click",filtrando)) {
-    function filtrando () {
-    let minprecio = document.getElementById("rangeFilterCountMin").value; // Definiendo una variable que tiene adentro el rango menor.
-    let maxprecio = document.getElementById("rangeFilterCountMax").value; // Definiendo una variable que tiene adentro el rango mayor.
-   return arreglo.filter(products => products.cost >= minprecio && products.cost <= maxprecio);
-    }
-  } else {
+ 
      for (const item of dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
@@ -45,11 +38,6 @@ function showData (dataArray) {
         contenedor.appendChild(linea);
     }
   }
-    
-
-   
-
-}
 
 function respuesta (response) {
   return response.json();
@@ -73,23 +61,18 @@ function mostrarProductos () {
 }
 
 
- //Filtrando por rango menor y mayor.
+function ordenasc () {
+ return datos.sort((a, b) => a.cost - b.cost);
+} 
 
- //DATA_URL.products.filter(function(x){ return x.cost >= 14000 && x.cost <= 35000});
+function ordendesc () {
+  return datos.sort((a, b) => b.cost - a.cost);
+}
 
-
-
-//function ordenar (){
-//  const ordenarRelevancia = (products, ascendente = true) => {
-//  return products.sort((a, b) => ascendente ? a.soldCount - b.soldCount : b.soldCount - a.soldCount)};
-
-//} 
-// Botón para filtrar:
-
-
-//Botón para ordenar:
-//document.getElementById("sortAsc").addEventListener("click", ordenar = true);
-//document.getElementById("sortDesc").addEventListener("click", ordenar = false);
+//Botón para ordenar asc:
+document.getElementById("sortAsc").addEventListener("click", ordenasc);
+// Boton para ordenar desc:
+document.getElementById("sortDesc").addEventListener("click", ordendesc);
 
 // Botón para limpiar:
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
