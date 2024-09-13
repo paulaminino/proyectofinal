@@ -61,29 +61,38 @@ function mostrarProductos () {
 
 mostrarProductos();
 
-// Desafiate busqueda ____________________________________
+// Desafiate busqueda ____________________________________ 
 
-const buscador = document.getElementById('buscador');
+// Selecciona el campo de texto y el botón de búsqueda
+const buscador = document.getElementById('buscador'); //Llamar al elemento id "buscador" del imput type en products.html
+const botonBuscar = document.getElementById('buscar');
 
-// Añadir evento de búsqueda
 
-buscador.addEventListener('input', function() {
-    const textoBusqueda = this.value.toLowerCase();
-    const productos = document.querySelectorAll('.producto'); // Selecciona todos los productos
+function realizarBusqueda() { // Función para realizar la búsqueda
+    const textoBusqueda = buscador.value.toLowerCase(); // Obtiene el texto del campo de búsqueda
+    const productos = document.querySelectorAll('.producto'); // Selecciona todos los productos del array
 
     // Filtrar productos según el texto ingresado
     productos.forEach(function(producto) {
         const titulo = producto.querySelector('.nombreproducto').textContent.toLowerCase();
         const descripcion = producto.querySelector('.descripcion').textContent.toLowerCase();
 
-        // Mostrar u ocultar el producto según si coincide con el título o la descripción
+        // Mostrar u ocultar el producto, según si coincide con el título o la descripción
         if (titulo.includes(textoBusqueda) || descripcion.includes(textoBusqueda)) {
             producto.style.display = 'block';  // Mostrar producto
         } else {
             producto.style.display = 'none';  // Ocultar producto
         }
     });
-});
+}
+
+// Evento cuando el usuario escribe - no necesario
+buscador.addEventListener('input', realizarBusqueda);
+
+// Evento para búsqueda cuando el usuario hace clic en el botón
+botonBuscar.addEventListener('click', realizarBusqueda);
+
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 /*INICIO Nombre Usuario en Barra: ENTREGA 2*/
