@@ -41,10 +41,6 @@ function showData (dataArray) {
   }
 
 
-    
-
-  }
-
 function respuesta (response) {
   return response.json();
 }
