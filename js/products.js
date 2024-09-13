@@ -62,11 +62,13 @@ function mostrarProductos () {
 }
 
 
-function ordenasc () {
+function ordenasc (datos) {
+  let datos = contenedor
  return datos.sort((a, b) => a.cost - b.cost);
 } 
 
-function ordendesc () {
+function ordendesc (datos) {
+  let datos = contenedor
   return datos.sort((a, b) => b.cost - a.cost);
 }
 
