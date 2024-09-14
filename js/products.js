@@ -1,10 +1,9 @@
-let DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL que contiene los datos que queremos mostrar
-
-const contenedor  = document.getElementById("c_autos");
-
+let categoria = localStorage.getItem("catID");
+const DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
 
 function showData (dataArray) {
-    for (const item of dataArray) {
+ 
+     for (const item of dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
@@ -38,8 +37,8 @@ function showData (dataArray) {
         linea.className = "lineaH";
         contenedor.appendChild(linea);
     }
-
 }
+
 
 function respuesta (response) {
   return response.json();
@@ -47,6 +46,7 @@ function respuesta (response) {
 
 function datos (DATA_URL) {
   return showData (DATA_URL.products);
+  
 }
 
 function esError(error){
@@ -60,7 +60,45 @@ function mostrarProductos () {
   .catch(esError);
 }
 
-mostrarProductos();
+let orden = '';
+
+function empty (padre) {
+  while (padre.firstChild){
+    padre.firstChild.remove ();
+  }
+}
+function ocultarActual () {
+  empty (contenedor);
+}
+
+function ordena (data){
+  if (orden == 'asc'){
+    data.products.sort((a, b) => a.cost - b.cost);
+    console.log (data.products);
+  } else if (orden == 'desc'){
+    data.products.sort((a, b) => b.cost - a.cost);
+    console.log (data.products);
+  } else if (orden == 'relev'){
+    data.products.sort((a, b) => b.soldCount - a.soldCount);
+    console.log (data.products);
+  }
+  ocultarActual ();
+  return (showData(data.products));
+}
+function ordenasc () {
+ orden = 'asc';
+ ordenarProductos ();
+} 
+
+function ordendesc () {
+ orden = 'desc';
+ ordenarProductos();
+}
+
+function ordenrelev() {
+  orden = 'relev';
+  ordenarProductos();
+}
 
 // Desafiate busqueda ____________________________________ 
 
@@ -104,8 +142,24 @@ buscador.addEventListener('input', realizarBusqueda);
 // Evento para búsqueda cuando el usuario hace clic en el botón
 botonBuscar.addEventListener('click', realizarBusqueda);
 
-// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// sort _____________________________________
 
+function ordenarProductos () {
+  fetch(DATA_URL)
+  .then(respuesta)
+  .then(ordena)
+  .catch(esError);
+}
+
+//Botón para ordenar asc:
+document.getElementById("sortAsc").addEventListener("click", ordenasc);
+// Boton para ordenar desc:
+document.getElementById("sortDesc").addEventListener("click", ordendesc);
+// Botón para ordenar por relevancia:
+document.getElementById("sortByCount").addEventListener("click", ordenrelev);
+
+
+mostrarProductos();
 
 /*INICIO Nombre Usuario en Barra: ENTREGA 2*/
 if (sessionStorage.getItem("sesion")) {
