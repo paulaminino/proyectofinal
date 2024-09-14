@@ -13,6 +13,17 @@ nav a {
   text-decoration: none;
 }
 
+
+/* Búsqueda categoría ---- */
+.buscadorcategoria {
+  margin-top: 1em;
+  text-align: right;
+}
+
+#buscador {
+width: auto;
+}
+
 /* código para products.html*/
 
 .headercategoria {
@@ -107,11 +118,7 @@ nav a {
   margin-top: 5em;
 }
 
-
 /* ------------------ */
-
-
-
 
 .bd-placeholder-img {
   font-size: 1.125rem;
