@@ -1,5 +1,5 @@
-let categoria = localStorage.getItem("catID");
-DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/${categoria}.json"; // URL que contiene los datos que queremos mostrar
+categoria = localStorage.getItem("catID");
+DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
 
 contenedor  = document.getElementById("c_producto");
 
