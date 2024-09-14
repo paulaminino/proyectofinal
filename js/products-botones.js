@@ -1,13 +1,61 @@
-let categoria = localStorage.getItem("catID");
-const DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL que contiene los datos que queremos mostrar
+
+contenedor  = document.getElementById("c_autos");
+
+let minprecio = document.getElementById("rangeFilterCountMin").value; // Definiendo una variable que tiene adentro el rango menor.
+let maxprecio = document.getElementById("rangeFilterCountMax").value; // Definiendo una variable que tiene adentro el rango mayor.
+let activacionFiltro = false;
+
+function Filtrar () {
+activacionFiltro = true;
+minprecio = document.getElementById("rangeFilterCountMin").value; // Definiendo una variable que tiene adentro el rango menor.
+maxprecio = document.getElementById("rangeFilterCountMax").value; // Definiendo una variable que tiene adentro el rango mayor.
+
+
+  ocultarActual ();
+  
+  mostrarFiltrado ();
+  
+}
+
+function empty (padre) {
+  while (padre.firstChild){
+    padre.firstChild.remove ();
+  }
+}
+function ocultarActual () {
+  empty (contenedor);
+  
+}
+
+function mostrarFiltrado () {
+  
+  Mostrar();
+
+  
+
+
 
 function showData (dataArray) {
- 
-     for (const item of dataArray) {
+  
+
+  function filtro(x){
+     return x.cost >= minprecio && x.cost <= maxprecio
+    }
+
+  function filtrarArreglo (arreglo) {  
+    return arreglo.filter(filtro);
+  }
+  let arreglo = dataArray
+if (activacionFiltro){
+  arreglo = filtrarArreglo(dataArray);
+}
+  
+     for (let item of arreglo) {
+      
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
-        prod.addEventListener('click', () => setProdID(item.id));
             let imagen = document.createElement ("img");
             imagen.className = "img";
             imagen.classList.add ("col-lg-4");
@@ -37,13 +85,14 @@ function showData (dataArray) {
         contenedor.appendChild(linea);
     }
   }
-
+  
 
 function respuesta (response) {
   return response.json();
 }
 
 function datos (DATA_URL) {
+  
   return showData (DATA_URL.products);
   
 }
@@ -52,69 +101,34 @@ function esError(error){
   console.error ("Ocurrió error", error);
 }
 
-function mostrarProductos () {
+function Mostrar () {
   fetch(DATA_URL)
   .then(respuesta)
   .then(datos)
   .catch(esError);
 }
-
-let orden = '';
-
-function empty (padre) {
-  while (padre.firstChild){
-    padre.firstChild.remove ();
-  }
-}
-function ocultarActual () {
-  empty (contenedor);
 }
 
-function ordena (data){
-  if (orden == 'asc'){
-    data.products.sort((a, b) => a.cost - b.cost);
-    console.log (data.products);
-  } else if (orden == 'desc'){
-    data.products.sort((a, b) => b.cost - a.cost);
-    console.log (data.products);
-  } else if (orden == 'relev'){
-    data.products.sort((a, b) => b.soldCount - a.soldCount);
-    console.log (data.products);
-  }
+// Botón para limpiar:
+function desfiltrar (){
+  minprecio = '';
+  maxprecio = '';
+  activacionFiltro = false;
   ocultarActual ();
-  return (showData(data.products));
-}
-function ordenasc () {
- orden = 'asc';
- ordenarProductos ();
-} 
-
-function ordendesc () {
- orden = 'desc';
- ordenarProductos();
+  mostrarFiltrado ();
+  
 }
 
-function ordenrelev() {
-  orden = 'relev';
-  ordenarProductos();
-}
+document.getElementById("clearRangeFilter").addEventListener("click", function(){
+  document.getElementById("rangeFilterCountMin").value = "";
+  document.getElementById("rangeFilterCountMax").value = "";
+  desfiltrar ();
+});
 
-function ordenarProductos () {
-  fetch(DATA_URL)
-  .then(respuesta)
-  .then(ordena)
-  .catch(esError);
-}
-
-//Botón para ordenar asc:
-document.getElementById("sortAsc").addEventListener("click", ordenasc);
-// Boton para ordenar desc:
-document.getElementById("sortDesc").addEventListener("click", ordendesc);
-// Botón para ordenar por relevancia:
-document.getElementById("sortByCount").addEventListener("click", ordenrelev);
+let botonFiltro = document.getElementById("rangeFilterCount")
+botonFiltro.addEventListener("click",Filtrar);
 
 
-mostrarProductos();
 
 /*INICIO Nombre Usuario en Barra: ENTREGA 2*/
 if (sessionStorage.getItem("sesion")) {
@@ -122,12 +136,3 @@ if (sessionStorage.getItem("sesion")) {
   document.getElementById("nom_usuario").innerHTML = nombre;
 }
 /*FIN Nombre Usuario en Barra: ENTREGA 2*/
-
-
-/*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
-function setProdID(id) {
-  localStorage.setItem("prodID", id);
-  window.location = "product-info.html";
-}
-/*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
-
