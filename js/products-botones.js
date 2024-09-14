@@ -1,6 +1,7 @@
-DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL que contiene los datos que queremos mostrar
+let categoria = localStorage.getItem("catID");
+DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/${categoria}.json"; // URL que contiene los datos que queremos mostrar
 
-contenedor  = document.getElementById("c_autos");
+contenedor  = document.getElementById("c_producto");
 
 let minprecio = document.getElementById("rangeFilterCountMin").value; // Definiendo una variable que tiene adentro el rango menor.
 let maxprecio = document.getElementById("rangeFilterCountMax").value; // Definiendo una variable que tiene adentro el rango mayor.

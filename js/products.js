@@ -1,9 +1,23 @@
 let categoria = localStorage.getItem("catID");
-const DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+let contenedor  = document.getElementById("c_producto");
+let titulocat  = document.getElementById("tipocategoria");
+let DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+
+function crearinformacion (DATA_URL) {
+showtitulo(DATA_URL);
+showData (DATA_URL.products);
+}
+
+function showtitulo (DATA_URL) {
+  let titulocategoriadeproducto = document.createElement("div");
+  titulocategoriadeproducto.appendChild(document.createTextNode("Categoría " + DATA_URL.catName));
+  titulocat.appendChild(titulocategoriadeproducto);
+
+}
 
 function showData (dataArray) {
- 
-     for (const item of dataArray) {
+
+    for (const item of dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
@@ -45,7 +59,7 @@ function respuesta (response) {
 }
 
 function datos (DATA_URL) {
-  return showData (DATA_URL.products);
+  return crearinformacion (DATA_URL);
   
 }
 
