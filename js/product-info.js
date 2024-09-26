@@ -5,6 +5,8 @@ if (sessionStorage.getItem("sesion")) {
 }
 /*FIN Nombre Usuario en Barra: ENTREGA 2*/
 
+let slideIndex = 1;
+
 /*INICIO leectura JSON*/
 let ID_PROD = localStorage.getItem("prodID");
 const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
@@ -63,23 +65,79 @@ function showData (item) {
               cantVend.appendChild(document.createTextNode(item.soldCount));
               textodiv.appendChild(cantVend); 
 
-          prod.appendChild(textodiv);
+          
+
+      
 
           let tituloimagenes = document.createElement("div"); /* Imágenes ilustrativas: -------------------- !!*/
               tituloimagenes.className = "tituloproducto"
               tituloimagenes.appendChild(document.createTextNode("Imágenes ilustrativas:"));
               textodiv.appendChild(tituloimagenes); 
-     // imagenes.className = "galeria";                       /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+      prod.appendChild(textodiv);
+
+      let imagenes = document.createElement("div");      
+      imagenes.className = "galeria";
+          let anterior = document.createElement("a");
+          anterior.appendChild(document.createTextNode("<"));
+          anterior.className = "prev";
+          anterior.id = "pre";
+          imagenes.appendChild (anterior);
+          let posterior = document.createElement ("a");
+          posterior.appendChild(document.createTextNode(">"));
+          posterior.className = "next";
+          posterior.id = "post";
+          imagenes.appendChild (posterior);
           
+
+
           for (let i of item.images){
+              let dvimg = document.createElement ("div");
+              dvimg.className = "divimg";
               let imagen = document.createElement ("img");
               imagen.className = "imgprod";                          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
               imagen.src = i;
-              prod.appendChild(imagen);
+              dvimg.appendChild(imagen)
+              imagenes.appendChild(dvimg);
           }
+      prod.appendChild(imagenes);
      // prod.appendChild(textodiv);
       /*FIN BLOQUE IMÁGEN*/          
       contenedorTodo.appendChild(prod);
+
+      
+
+//INICIO CARRUSEL//
+
+showSlides(slideIndex);
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+function showSlides(n) {
+  let j;
+  let slides = document.getElementsByClassName ("divimg");
+  console.log(slides);
+  if (n > slides.length) {
+    slideIndex = 1
+  }
+  if (n < 1) {
+    slideIndex = slides.length
+  }
+  for (j = 0; j < slides.length; j++) {
+    slides[j].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+//FIN CARRUSEL//
+let ant = document.getElementById ("pre");
+let post = document.getElementById("post");
+ant.addEventListener ("click", function() {
+  plusSlides(-1);
+});
+post.addEventListener ("click", function() {
+  plusSlides(1);
+});
+
 }
 
 
@@ -104,3 +162,6 @@ function mostrarProducto () {
 }
 
 mostrarProducto();
+
+
+
