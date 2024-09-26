@@ -15,6 +15,7 @@ const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.j
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
 
 function showData (item) {
+  //INICIO BLOQUE PRODUCTO//
   let prod = document.createElement("div");
   prod.className = "productocatego";   /*CLASE QUE SE PUEDEN USAR EN HTML, SE PUEDE AGREGAR MÁS CON prod.classList.add ("nuevaClase"); - Para agregar ID usar prod.id = "nuevoID"; (usarlo solo en elementos únicos)*/
       let textodiv = document.createElement("div"); /* div para todo texto */
@@ -100,9 +101,33 @@ function showData (item) {
               imagenes.appendChild(dvimg);
           }
       prod.appendChild(imagenes);
-     // prod.appendChild(textodiv);
-      /*FIN BLOQUE IMÁGEN*/          
+      /*FIN BLOQUE IMÁGEN*/    
       contenedorTodo.appendChild(prod);
+      //FIN BLOQUE PRODUCTO//
+
+      //INICIO PRODUCTOS RELACIONADOS//      
+      let prodrelacionados = document.createElement("div");
+     prodrelacionados.className = "prodRelacionados";
+        let tituloprodrelacionados = document.createElement("div");
+              tituloprodrelacionados.className = "tituloproducto"
+              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
+              prodrelacionados.appendChild(tituloprodrelacionados);
+        let cadaProdRel = document.createElement ("div");
+        cadaProdRel.className = "cadaRel"
+        for (let k of item.relatedProducts){
+          let imagenRel = document.createElement ("img");
+            imagenRel.className = "imgrelacionado";
+            imagenRel.src = k.image;
+            cadaProdRel.appendChild(imagenRel);
+          let infoRel = document.createElement ("div");
+            infoRel.className = "infoRel";
+            infoRel.appendChild(document.createTextNode(k.name));
+            cadaProdRel.appendChild(infoRel); 
+        }
+        prodrelacionados.appendChild(cadaProdRel);
+        contenedorTodo.appendChild(prodrelacionados);
+      /*FIN PRODUTOS RELACIONADOS*/          
+      
 
       
 
