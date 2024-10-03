@@ -112,9 +112,12 @@ function showData (item) {
               tituloprodrelacionados.className = "tituloproducto"
               tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
               prodrelacionados.appendChild(tituloprodrelacionados);
-        let cadaProdRel = document.createElement ("div");
-        cadaProdRel.className = "cadaRel"
+        let ProdRel = document.createElement ("div");
+        ProdRel.className = "ProdRel"
         for (let k of item.relatedProducts){
+          let cadaProdRel = document.createElement ("div");
+          cadaProdRel.className = "cadaRel"
+          cadaProdRel.addEventListener('click', () => setProdID(k.id));
           let imagenRel = document.createElement ("img");
             imagenRel.className = "imgrelacionado";
             imagenRel.src = k.image;
@@ -123,8 +126,9 @@ function showData (item) {
             infoRel.className = "infoRel";
             infoRel.appendChild(document.createTextNode(k.name));
             cadaProdRel.appendChild(infoRel); 
+          ProdRel.appendChild(cadaProdRel);
         }
-        prodrelacionados.appendChild(cadaProdRel);
+        prodrelacionados.appendChild(ProdRel);
         contenedorTodo.appendChild(prodrelacionados);
       /*FIN PRODUTOS RELACIONADOS*/          
       
@@ -188,5 +192,10 @@ function mostrarProducto () {
 
 mostrarProducto();
 
-
+/*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
+/*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 

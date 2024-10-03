@@ -51,9 +51,39 @@
   /*FIN CARRUSEL*/
 
   /*INICIO PRODUCTOS RELACIONADOS*/
-  .prodRelacionados{
-    
-    
+  .cadaRel {
+    border: 1px solid #ccc;
+  }
+  
+  .cadaRel:hover {
+    border: 1px solid #777;
+  }
+  
+  .imgrelacionado {
+    width: 100%;
+    height: auto;
+  }
+  
+  .infoRel {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .cadaRel {
+    box-sizing: border-box;
+  }
+  
+  .cadaRel {
+    padding: 6px 6px ;
+    float: left;
+    width: 25%;
+    margin: 1%
+  }
+  
+  .ProdRel {
+    max-width: 100%;
+    display: flex;
+    justify-content: center
   }
 
 
