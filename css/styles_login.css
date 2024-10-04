@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    background-color: #F8F9FA;
+    font-family: Verdana;
+    color: #212529;   
+    flex-direction: column;
+}
+
+
+form {
+    width: 50%;
+    max-width: 860px; 
+    padding: 5px; 
+}
+
+
+.registro {
+    font-size: 20pt;
+    text-align: center; 
+    margin-bottom: 15px; 
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#img_login {
+    max-width: 100%;
+    height: auto;
+    /*text-align: center;*/
+}
+
+
+.form_label{
+    display: block;
+    margin-bottom: 0px;
+}
+
+.form-control {
+    box-shadow: 0px 2px 4px  #738291;
+    background-color: white;
+    border-color: #212529;
+    border-radius:16px;
+    border-width: 1px;
+    width: 100%; 
+    margin-bottom: 20px; 
+    margin-top: 0px;
+}
+
+
+#ingresoBtn {
+    max-width: 50%; 
+    box-shadow: 0px 2px 4px  #738291;
+    border-color: #212529;
+    border-radius:16px;
+    background-color: #F09100;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    margin: auto;  
+    margin-bottom: 0px;
+}
+
+footer {
+    text-justify: distribute;
+    margin-top: 0px;
+}
+.float-start {
+    display: block;
+    text-align: left;
+    margin-right: 30px;
+}
+
+.float-end {
+    display: block;
+    text-align: right;
+    margin-left: 30px;
+}
