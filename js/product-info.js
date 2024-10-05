@@ -104,3 +104,37 @@ function mostrarProducto () {
 }
 
 mostrarProducto();
+
+// Array con calificaciones actuales
+const ratings = [
+  { username: 'Enrique Salsedo', date: '10 de sep. 2024', comment: 'Excelente, súper recomendado.', rating: 5 },
+  { username: 'Mariana Reboledo', date: '23 de ene. 2024', comment: 'Me encantó, súper cómodo y espacioso.', rating: 4 },
+  { username: 'Susana Puente', date: '23 de ene. 2024', comment: 'Hermoso, pero el maletero no es tan grande como esperaba.', rating: 3 }
+];
+
+function mostrarRatings() {
+  let container = document.querySelector('.user-ratings');
+  container.innerHTML = ''; 
+  ratings.forEach(r => {
+    container.innerHTML += `<div class="rating">
+      <div class="stars">${'★'.repeat(r.rating) + '☆'.repeat(5 - r.rating)}</div>
+      <p><strong>${r.username}:</strong> ${r.comment}<br><span class="date">${r.date}</span></p>
+    </div>`;
+  });
+}
+
+// Envío del formulario
+document.querySelector('button[type="submit"]').onclick = function(e) {
+  e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
+  let comment = document.getElementById('comment').value;
+  let rating = document.getElementById('rating').value;
+  if (comment && rating) {
+    ratings.push({ username: 'Usuario', date: new Date().toLocaleDateString(), comment, rating: +rating });
+    mostrarRatings(); // Actualización de calificaciones
+    document.getElementById('comment').value = ''; // Limpia el input de comentario
+    document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
+  }
+}
+
+mostrarRatings(); 
+
