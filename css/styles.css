@@ -118,6 +118,14 @@ width: auto;
   margin-top: 5em;
 }
 
+.prodRelacionados {
+  padding: 3% 15%;
+  font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+  color: #212529; /* Color gris */
+  width: 100%; 
+}
+
+
 /* ------------------ */
 
 .bd-placeholder-img {
