@@ -119,6 +119,18 @@ width: auto;
 }
 
 
+/* Comentarios Product-info */
+.calificaciones {
+  background-color: #f2f2f2; /* Fondo gris claro */
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.fechaComentario {
+  font-size: small;
+}
+
+
 .prodRelacionados {
   padding: 3% 15%;
   font-size: 15px; /* Tamaño de fuente para la descripción del producto */

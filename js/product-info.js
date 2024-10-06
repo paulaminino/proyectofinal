@@ -66,9 +66,6 @@ function showData (item) {
               cantVend.appendChild(document.createTextNode(item.soldCount));
               textodiv.appendChild(cantVend); 
 
-          
-
-      
 
           let tituloimagenes = document.createElement("div"); /* Imágenes ilustrativas: -------------------- !!*/
               tituloimagenes.className = "tituloproducto"
@@ -104,36 +101,7 @@ function showData (item) {
       /*FIN BLOQUE IMÁGEN*/    
       contenedorTodo.appendChild(prod);
       //FIN BLOQUE PRODUCTO//
-
-      //INICIO PRODUCTOS RELACIONADOS//      
-      let prodrelacionados = document.createElement("div");
-     prodrelacionados.className = "prodRelacionados";
-        let tituloprodrelacionados = document.createElement("div");
-              tituloprodrelacionados.className = "tituloproducto"
-              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
-              prodrelacionados.appendChild(tituloprodrelacionados);
-        let ProdRel = document.createElement ("div");
-        ProdRel.className = "ProdRel"
-        for (let k of item.relatedProducts){
-          let cadaProdRel = document.createElement ("div");
-          cadaProdRel.className = "cadaRel"
-          cadaProdRel.addEventListener('click', () => setProdID(k.id));
-          let imagenRel = document.createElement ("img");
-            imagenRel.className = "imgrelacionado";
-            imagenRel.src = k.image;
-            cadaProdRel.appendChild(imagenRel);
-          let infoRel = document.createElement ("div");
-            infoRel.className = "infoRel";
-            infoRel.appendChild(document.createTextNode(k.name));
-            cadaProdRel.appendChild(infoRel); 
-          ProdRel.appendChild(cadaProdRel);
-        }
-        prodrelacionados.appendChild(ProdRel);
-        contenedorTodo.appendChild(prodrelacionados);
-      /*FIN PRODUTOS RELACIONADOS*/          
-      
-
-      
+    
 
 //INICIO CARRUSEL//
 
@@ -169,7 +137,67 @@ post.addEventListener ("click", function() {
 
 }
 
+// COMENTARIOS
 
+let PRODUCT_ID = localStorage.getItem("prodID");
+const COMMENTS_URL = https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json; 
+
+function showComments(comments) {
+  comments.forEach(comment => {
+    let calificaciones = document.createElement("div");
+    calificaciones.className = "calificaciones"; // Estilo para el bloque gris
+    
+    let calificacion = document.createElement("div");
+    calificacion.className = "usuarioScore";
+    calificacion.appendChild(document.createTextNode(comment.score));
+    calificaciones.appendChild(calificacion);
+
+    let usuario = document.createElement("div");
+    usuario.className = "usuarioComentario";
+    usuario.appendChild(document.createTextNode(comment.user + ":"));
+    calificaciones.appendChild(usuario);
+
+    let comentariodescription = document.createElement("div");
+    comentariodescription.className = "ComentarioDescripcion";
+    comentariodescription.appendChild(document.createTextNode(comment.description));
+    calificaciones.appendChild(comentariodescription);
+
+    let fecha = document.createElement("div");
+    fecha.className = "fechaComentario";
+    fecha.appendChild(document.createTextNode(comment.dateTime));
+    calificaciones.appendChild(fecha);
+
+    // Añadir el bloque de comentarios después de las imágenes
+    contenedorTodo.appendChild(calificaciones);
+  });
+}
+
+      //INICIO PRODUCTOS RELACIONADOS//      
+      let prodrelacionados = document.createElement("div");
+      prodrelacionados.className = "prodRelacionados";
+        let tituloprodrelacionados = document.createElement("div");
+              tituloprodrelacionados.className = "tituloproducto"
+              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
+              prodrelacionados.appendChild(tituloprodrelacionados);
+        let ProdRel = document.createElement ("div");
+        ProdRel.className = "ProdRel"
+        for (let k of item.relatedProducts){
+          let cadaProdRel = document.createElement ("div");
+          cadaProdRel.className = "cadaRel"
+          cadaProdRel.addEventListener('click', () => setProdID(k.id));
+          let imagenRel = document.createElement ("img");
+            imagenRel.className = "imgrelacionado";
+            imagenRel.src = k.image;
+            cadaProdRel.appendChild(imagenRel);
+          let infoRel = document.createElement ("div");
+            infoRel.className = "infoRel";
+            infoRel.appendChild(document.createTextNode(k.name));
+            cadaProdRel.appendChild(infoRel); 
+          ProdRel.appendChild(cadaProdRel);
+        }
+        prodrelacionados.appendChild(ProdRel);
+        contenedorTodo.appendChild(prodrelacionados);
+      /*FIN PRODUTOS RELACIONADOS*/      
 
 function respuesta (response) {
   return response.json();
@@ -192,6 +220,15 @@ function mostrarProducto () {
 
 mostrarProducto();
 
+// Solicitud para mostrar comentarios
+function mostrarCalificaciones () {
+fetch(COMMENTS_URL)
+  .then(respuesta)
+  .then(comments => showComments(comments))
+  .catch(esError);
+}
+
+mostrarCalificaciones();
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 function setProdID(id) {
   localStorage.setItem("prodID", id);
