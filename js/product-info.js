@@ -8,8 +8,6 @@ if (sessionStorage.getItem("sesion")) {
 /*INICIO leectura JSON*/
 let ID_PROD = localStorage.getItem("prodID");
 const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
-
-
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
 
 function showData (item) {
@@ -69,7 +67,7 @@ function showData (item) {
               tituloimagenes.className = "tituloproducto"
               tituloimagenes.appendChild(document.createTextNode("Imágenes ilustrativas:"));
               textodiv.appendChild(tituloimagenes); 
-     // imagenes.className = "galeria";                       /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+     // imagenes.className = "galeria";            /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
           
           for (let i of item.images){
               let imagen = document.createElement ("img");
@@ -82,7 +80,43 @@ function showData (item) {
       contenedorTodo.appendChild(prod);
 }
 
+//////////////////////////////// Comentarios
 
+let PRODUCT_ID = localStorage.getItem("prodID");
+const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; 
+
+function showComments(comments) {
+  comments.forEach(comment => {
+    let calificaciones = document.createElement("div");
+    calificaciones.className = "calificaciones"; // Estilo para el bloque gris
+    
+    let calificacion = document.createElement("div");
+    calificacion.className = "usuarioScore";
+    calificacion.appendChild(document.createTextNode(comment.score));
+    calificaciones.appendChild(calificacion);
+
+    let usuario = document.createElement("div");
+    usuario.className = "usuarioComentario";
+    usuario.appendChild(document.createTextNode(comment.user + ":"));
+    calificaciones.appendChild(usuario);
+
+    let comentariodescription = document.createElement("div");
+    comentariodescription.className = "ComentarioDescripcion";
+    comentariodescription.appendChild(document.createTextNode(comment.description));
+    calificaciones.appendChild(comentariodescription);
+
+    let fecha = document.createElement("div");
+    fecha.className = "fechaComentario";
+    fecha.appendChild(document.createTextNode(comment.dateTime));
+    calificaciones.appendChild(fecha);
+
+    // Añadir el bloque de comentarios después de las imágenes
+    contenedorTodo.appendChild(calificaciones);
+  });
+}
+
+
+//////////////////////////////////////////////////// Fin
 
 function respuesta (response) {
   return response.json();
@@ -97,10 +131,24 @@ function esError(error){
 }
 
 function mostrarProducto () {
+
   fetch(DATA_URL)
   .then(respuesta)
   .then(datos)
   .catch(esError);
 }
 
+// Solicitud para mostrar comentarios
+
+
 mostrarProducto();
+
+function mostrarCalificaciones () {
+fetch(COMMENTS_URL)
+  .then(respuesta)
+  .then(comments => showComments(comments))
+  .catch(esError);
+
+}
+
+mostrarCalificaciones();

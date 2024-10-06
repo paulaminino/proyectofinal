@@ -118,6 +118,23 @@ width: auto;
   margin-top: 5em;
 }
 
+/* Comentarios Product-info */
+
+
+.calificaciones {
+  background-color: #f2f2f2; /* Fondo gris claro */
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.calificaciones {
+  margin-top: 20px;
+}
+
+.fechaComentario {
+  font-size: small;
+}
+
 /* ------------------ */
 
 .bd-placeholder-img {
