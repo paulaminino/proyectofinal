@@ -5,12 +5,15 @@ if (sessionStorage.getItem("sesion")) {
 }
 /*FIN Nombre Usuario en Barra: ENTREGA 2*/
 
+let slideIndex = 1;
+
 /*INICIO leectura JSON*/
 let ID_PROD = localStorage.getItem("prodID");
 const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
 
 function showData (item) {
+  //INICIO BLOQUE PRODUCTO//
   let prod = document.createElement("div");
   prod.className = "productocatego";   /*CLASE QUE SE PUEDEN USAR EN HTML, SE PUEDE AGREGAR MÁS CON prod.classList.add ("nuevaClase"); - Para agregar ID usar prod.id = "nuevoID"; (usarlo solo en elementos únicos)*/
       let textodiv = document.createElement("div"); /* div para todo texto */
@@ -60,27 +63,45 @@ function showData (item) {
               cantVend.className = "nota";            
               cantVend.appendChild(document.createTextNode(item.soldCount));
               textodiv.appendChild(cantVend); 
-
-          prod.appendChild(textodiv);
-
+  
           let tituloimagenes = document.createElement("div"); /* Imágenes ilustrativas: -------------------- !!*/
               tituloimagenes.className = "tituloproducto"
               tituloimagenes.appendChild(document.createTextNode("Imágenes ilustrativas:"));
               textodiv.appendChild(tituloimagenes); 
-     // imagenes.className = "galeria";            /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+  
+     // imagenes.className = "galeria"; /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+  
+      prod.appendChild(textodiv);
+
+      let imagenes = document.createElement("div");      
+      imagenes.className = "galeria";
+          let anterior = document.createElement("a");
+          anterior.appendChild(document.createTextNode("<"));
+          anterior.className = "prev";
+          anterior.id = "pre";
+          imagenes.appendChild (anterior);
+          let posterior = document.createElement ("a");
+          posterior.appendChild(document.createTextNode(">"));
+          posterior.className = "next";
+          posterior.id = "post";
+          imagenes.appendChild (posterior);
           
           for (let i of item.images){
+              let dvimg = document.createElement ("div");
+              dvimg.className = "divimg";
               let imagen = document.createElement ("img");
-              imagen.className = "imgprod";                          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+              imagen.className = "imgprod";          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
               imagen.src = i;
-              prod.appendChild(imagen);
+              dvimg.appendChild(imagen)
+              imagenes.appendChild(dvimg);
           }
-     // prod.appendChild(textodiv);
-      /*FIN BLOQUE IMÁGEN*/          
+  
+      prod.appendChild(imagenes);
+      /*FIN BLOQUE IMÁGEN*/    
       contenedorTodo.appendChild(prod);
-}
+      //FIN BLOQUE PRODUCTO//
 
-//////////////////////////////// Comentarios
+  //////////////////////////////// Comentarios
 
 let PRODUCT_ID = localStorage.getItem("prodID");
 const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; 
@@ -117,6 +138,72 @@ function showComments(comments) {
 
 
 //////////////////////////////////////////////////// Fin
+  
+  
+      //INICIO PRODUCTOS RELACIONADOS//
+  
+      let prodrelacionados = document.createElement("div");
+     prodrelacionados.className = "prodRelacionados";
+        let tituloprodrelacionados = document.createElement("div");
+              tituloprodrelacionados.className = "tituloproducto"
+              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
+              prodrelacionados.appendChild(tituloprodrelacionados);
+        let ProdRel = document.createElement ("div");
+        ProdRel.className = "ProdRel"
+        for (let k of item.relatedProducts){
+          let cadaProdRel = document.createElement ("div");
+          cadaProdRel.className = "cadaRel"
+          cadaProdRel.addEventListener('click', () => setProdID(k.id));
+          let imagenRel = document.createElement ("img");
+            imagenRel.className = "imgrelacionado";
+            imagenRel.src = k.image;
+            cadaProdRel.appendChild(imagenRel);
+          let infoRel = document.createElement ("div");
+            infoRel.className = "infoRel";
+            infoRel.appendChild(document.createTextNode(k.name));
+            cadaProdRel.appendChild(infoRel); 
+          ProdRel.appendChild(cadaProdRel);
+        }
+        prodrelacionados.appendChild(ProdRel);
+        contenedorTodo.appendChild(prodrelacionados);
+      /*FIN PRODUTOS RELACIONADOS*/          
+      
+
+      
+
+//INICIO CARRUSEL//
+
+showSlides(slideIndex);
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+function showSlides(n) {
+  let j;
+  let slides = document.getElementsByClassName ("divimg");
+  console.log(slides);
+  if (n > slides.length) {
+    slideIndex = 1
+  }
+  if (n < 1) {
+    slideIndex = slides.length
+  }
+  for (j = 0; j < slides.length; j++) {
+    slides[j].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+//FIN CARRUSEL//
+let ant = document.getElementById ("pre");
+let post = document.getElementById("post");
+ant.addEventListener ("click", function() {
+  plusSlides(-1);
+});
+post.addEventListener ("click", function() {
+  plusSlides(1);
+});
+
+}
 
 function respuesta (response) {
   return response.json();
@@ -138,17 +225,23 @@ function mostrarProducto () {
   .catch(esError);
 }
 
-// Solicitud para mostrar comentarios
-
-
 mostrarProducto();
+
+
+// Solicitud para mostrar comentarios
 
 function mostrarCalificaciones () {
 fetch(COMMENTS_URL)
   .then(respuesta)
   .then(comments => showComments(comments))
   .catch(esError);
-
 }
 
 mostrarCalificaciones();
+
+/*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
+}
+/*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/

@@ -11,6 +11,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/styles_product-info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,9 +40,78 @@
     </div>
   </nav>
   <main>
+   
+
+
+    <div class="container">
+      <!-- Calificaciones de los usuarios -->
+      <section class="user-ratings">
+          <h2>Calificaciones de los usuarios</h2>
+          <div class="rating">
+              <div class="stars">★★★★★</div>
+              <p><strong>Enrique Salsedo:</strong><br>Excelente, súper recomendado.<br><span class="date">10 de sep. 2024</span></p>
+          </div>
+          <div class="rating">
+              <div class="stars">★★★★☆</div>
+              <p><strong>Mariana Reboledo:</strong><br>Me encantó, súper cómodo y espacioso.<br><span class="date">23 de ene. 2024</span></p>
+          </div>
+          <div class="rating">
+              <div class="stars">★★★☆☆</div>
+              <p><strong>Susana Puente:</strong><br>Hermoso, pero el maletero no es tan grande como esperaba.<br><span class="date">23 de ene. 2024</span></p>
+          </div>
+      </section>
+
+      <!-- Deja tu calificación -->
+      <section class="leave-rating">
+          <h2>Deja tu calificación</h2>
+          <form>
+              <label for="comment">Comentario:</label>
+              <textarea id="comment" name="comment" placeholder="Escribe aquí tu comentario"></textarea>
+              </div>
+
+              <div class="form-group">
+              <label for="rating">Calificación:</label>
+              <div class="rating-section">
+                  <div class="stars">
+            
+                  </div>
+                  <select id="rating" name="rating">
+                      <option value="1">★</option>
+                      <option value="2">★★</option>
+                      <option value="3">★★★</option>
+                      <option value="4">★★★★</option>
+                      <option value="5">★★★★★</option>
+                  </select>
+              </div>
+          </div>
+
+              <button type="submit">Enviar</button>
+          </form>
+      </section>
+  </div>
+
+  <!-- Productos Relacionados -->
+  <section class="related-products">
+      <h2>Productos Relacionados</h2>
+      <div class="product-grid">
+          <div class="product">
+              <img src="img/prod50922_1.jpg" alt="Fiat Way">
+              <p>Fiat Way</p>
+          </div>
+          <div class="product">
+              <img src="img/prod50923_1.jpg" alt="Suzuki Celerio">
+              <p>Suzuki Celerio</p>
+          </div>
+          <div class="product">
+              <img src="img/prod50924_1.jpg" alt="Peugeot 208">
+              <p>Peugeot 208</p>
+          </div>
+      </div>
+  </section>
 
 
     <div id="div_contenedorTodo"> <!-- NECESARIO PARA LEER JSON, TODA LA INFO LA PONE ADENTRO-->
+      
     </div>
 
 
