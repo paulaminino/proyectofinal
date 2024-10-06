@@ -10,8 +10,6 @@ let slideIndex = 1;
 /*INICIO leectura JSON*/
 let ID_PROD = localStorage.getItem("prodID");
 const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
-
-
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
 
 function showData (item) {
@@ -65,15 +63,14 @@ function showData (item) {
               cantVend.className = "nota";            
               cantVend.appendChild(document.createTextNode(item.soldCount));
               textodiv.appendChild(cantVend); 
-
-          
-
-      
-
+  
           let tituloimagenes = document.createElement("div"); /* Imágenes ilustrativas: -------------------- !!*/
               tituloimagenes.className = "tituloproducto"
               tituloimagenes.appendChild(document.createTextNode("Imágenes ilustrativas:"));
               textodiv.appendChild(tituloimagenes); 
+  
+     // imagenes.className = "galeria"; /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+  
       prod.appendChild(textodiv);
 
       let imagenes = document.createElement("div");      
@@ -89,23 +86,62 @@ function showData (item) {
           posterior.id = "post";
           imagenes.appendChild (posterior);
           
-
-
           for (let i of item.images){
               let dvimg = document.createElement ("div");
               dvimg.className = "divimg";
               let imagen = document.createElement ("img");
-              imagen.className = "imgprod";                          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
+              imagen.className = "imgprod";          /*CLASE QUE SE PUEDEN USAR EN CSS, SE PUEDE AGREGAR MÁS*/
               imagen.src = i;
               dvimg.appendChild(imagen)
               imagenes.appendChild(dvimg);
           }
+  
       prod.appendChild(imagenes);
       /*FIN BLOQUE IMÁGEN*/    
       contenedorTodo.appendChild(prod);
       //FIN BLOQUE PRODUCTO//
 
-      //INICIO PRODUCTOS RELACIONADOS//      
+  //////////////////////////////// Comentarios
+
+let PRODUCT_ID = localStorage.getItem("prodID");
+const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; 
+
+function showComments(comments) {
+  comments.forEach(comment => {
+    let calificaciones = document.createElement("div");
+    calificaciones.className = "calificaciones"; // Estilo para el bloque gris
+    
+    let calificacion = document.createElement("div");
+    calificacion.className = "usuarioScore";
+    calificacion.appendChild(document.createTextNode(comment.score));
+    calificaciones.appendChild(calificacion);
+
+    let usuario = document.createElement("div");
+    usuario.className = "usuarioComentario";
+    usuario.appendChild(document.createTextNode(comment.user + ":"));
+    calificaciones.appendChild(usuario);
+
+    let comentariodescription = document.createElement("div");
+    comentariodescription.className = "ComentarioDescripcion";
+    comentariodescription.appendChild(document.createTextNode(comment.description));
+    calificaciones.appendChild(comentariodescription);
+
+    let fecha = document.createElement("div");
+    fecha.className = "fechaComentario";
+    fecha.appendChild(document.createTextNode(comment.dateTime));
+    calificaciones.appendChild(fecha);
+
+    // Añadir el bloque de comentarios después de las imágenes
+    contenedorTodo.appendChild(calificaciones);
+  });
+}
+
+
+//////////////////////////////////////////////////// Fin
+  
+  
+      //INICIO PRODUCTOS RELACIONADOS//
+  
       let prodrelacionados = document.createElement("div");
      prodrelacionados.className = "prodRelacionados";
         let tituloprodrelacionados = document.createElement("div");
@@ -169,8 +205,6 @@ post.addEventListener ("click", function() {
 
 }
 
-
-
 function respuesta (response) {
   return response.json();
 }
@@ -184,6 +218,7 @@ function esError(error){
 }
 
 function mostrarProducto () {
+
   fetch(DATA_URL)
   .then(respuesta)
   .then(datos)
@@ -192,10 +227,21 @@ function mostrarProducto () {
 
 mostrarProducto();
 
+
+// Solicitud para mostrar comentarios
+
+function mostrarCalificaciones () {
+fetch(COMMENTS_URL)
+  .then(respuesta)
+  .then(comments => showComments(comments))
+  .catch(esError);
+}
+
+mostrarCalificaciones();
+
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 function setProdID(id) {
   localStorage.setItem("prodID", id);
   window.location = "product-info.html";
 }
 /*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
-
