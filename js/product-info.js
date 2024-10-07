@@ -13,6 +13,7 @@ const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.j
 
 
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
+const calificacionesycomentarios = document.getElementById("div_calificacionesycomentarios"); 
 
 function showData (item) {
   //INICIO BLOQUE PRODUCTO//
@@ -101,7 +102,34 @@ function showData (item) {
       /*FIN BLOQUE IMÁGEN*/    
       contenedorTodo.appendChild(prod);
       //FIN BLOQUE PRODUCTO//
-    
+
+      //INICIO PRODUCTOS RELACIONADOS//      
+      let prodrelacionados = document.createElement("div");
+      prodrelacionados.className = "prodRelacionados";
+        let tituloprodrelacionados = document.createElement("div");
+              tituloprodrelacionados.className = "tituloproducto"
+              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
+              prodrelacionados.appendChild(tituloprodrelacionados);
+        let ProdRel = document.createElement ("div");
+        ProdRel.className = "ProdRel"
+        for (let k of item.relatedProducts){
+          let cadaProdRel = document.createElement ("div");
+          cadaProdRel.className = "cadaRel"
+          cadaProdRel.addEventListener('click', () => setProdID(k.id));
+          let imagenRel = document.createElement ("img");
+            imagenRel.className = "imgrelacionado";
+            imagenRel.src = k.image;
+            cadaProdRel.appendChild(imagenRel);
+          let infoRel = document.createElement ("div");
+            infoRel.className = "infoRel";
+            infoRel.appendChild(document.createTextNode(k.name));
+            cadaProdRel.appendChild(infoRel); 
+          ProdRel.appendChild(cadaProdRel);
+        }
+        prodrelacionados.appendChild(ProdRel);
+        contenedorTodo.appendChild(prodrelacionados);
+      /*FIN PRODUTOS RELACIONADOS*/          
+
 
 //INICIO CARRUSEL//
 
@@ -137,20 +165,34 @@ post.addEventListener ("click", function() {
 
 }
 
-// COMENTARIOS
+// Comentarios
 
 let PRODUCT_ID = localStorage.getItem("prodID");
-const COMMENTS_URL = https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json; 
+const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; 
 
 function showComments(comments) {
+  let titulocalificacion = document.createElement("div");
+  titulocalificacion.className = "tituloproducto";
+  titulocalificacion.appendChild(document.createTextNode("Calificaciones de los usuarios"));
+  calificacionesycomentarios.appendChild(titulocalificacion);
+
   comments.forEach(comment => {
     let calificaciones = document.createElement("div");
     calificaciones.className = "calificaciones"; // Estilo para el bloque gris
     
     let calificacion = document.createElement("div");
     calificacion.className = "usuarioScore";
-    calificacion.appendChild(document.createTextNode(comment.score));
+    calificacion.appendChild(document.createTextNode( () => mostrarRaitings(comment.score)));
     calificaciones.appendChild(calificacion);
+
+    /*let userraitings = document.createElement("div");
+    userraitings.className = "user-raitings"; 
+
+    let rating = document.createElement("div");
+    rating.className = "raiting"; 
+
+    let stars = document.createElement("div");
+    stars.className = "stars"; */
 
     let usuario = document.createElement("div");
     usuario.className = "usuarioComentario";
@@ -168,36 +210,30 @@ function showComments(comments) {
     calificaciones.appendChild(fecha);
 
     // Añadir el bloque de comentarios después de las imágenes
-    contenedorTodo.appendChild(calificaciones);
+    calificacionesycomentarios.appendChild(calificaciones);
   });
 }
 
-      //INICIO PRODUCTOS RELACIONADOS//      
-      let prodrelacionados = document.createElement("div");
-      prodrelacionados.className = "prodRelacionados";
-        let tituloprodrelacionados = document.createElement("div");
-              tituloprodrelacionados.className = "tituloproducto"
-              tituloprodrelacionados.appendChild(document.createTextNode("Productos Relacionados:"));
-              prodrelacionados.appendChild(tituloprodrelacionados);
-        let ProdRel = document.createElement ("div");
-        ProdRel.className = "ProdRel"
-        for (let k of item.relatedProducts){
-          let cadaProdRel = document.createElement ("div");
-          cadaProdRel.className = "cadaRel"
-          cadaProdRel.addEventListener('click', () => setProdID(k.id));
-          let imagenRel = document.createElement ("img");
-            imagenRel.className = "imgrelacionado";
-            imagenRel.src = k.image;
-            cadaProdRel.appendChild(imagenRel);
-          let infoRel = document.createElement ("div");
-            infoRel.className = "infoRel";
-            infoRel.appendChild(document.createTextNode(k.name));
-            cadaProdRel.appendChild(infoRel); 
-          ProdRel.appendChild(cadaProdRel);
-        }
-        prodrelacionados.appendChild(ProdRel);
-        contenedorTodo.appendChild(prodrelacionados);
-      /*FIN PRODUTOS RELACIONADOS*/      
+      function mostrarRatings(score) {
+    for (let r of score) {
+        calificacion.innerHTML += `<div class="rating">
+                <div class="stars">${'★'.repeat(r) + '☆'.repeat(5 - r)}</div></div>`;
+    }
+} 
+
+// Envío del formulario
+document.querySelector('button[type="submit"]').onclick = function(e) {
+  e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
+  let comment = document.getElementById('comment').value;
+  let rating = document.getElementById('rating').value;
+  if (comment && rating) {
+    ratings.push({ username: 'Usuario', date: new Date().toLocaleDateString(), comment, rating: +rating });
+    mostrarRatings(); // Actualización de calificaciones
+    document.getElementById('comment').value = ''; // Limpia el input de comentario
+    document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
+  }
+}
+
 
 function respuesta (response) {
   return response.json();
@@ -218,7 +254,7 @@ function mostrarProducto () {
   .catch(esError);
 }
 
-mostrarProducto();
+
 
 // Solicitud para mostrar comentarios
 function mostrarCalificaciones () {
@@ -228,7 +264,9 @@ fetch(COMMENTS_URL)
   .catch(esError);
 }
 
+mostrarProducto();
 mostrarCalificaciones();
+
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 function setProdID(id) {
   localStorage.setItem("prodID", id);
