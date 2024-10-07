@@ -224,7 +224,7 @@ function showComments(comments) {
 
   document.querySelector('button[type="submit"]').onclick = function(e) {
     e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
-    let nombre = document.getElementById('nombreUsuario').value;
+    let nombre = document.getElementById('nomUsuario').value;
     let comment = document.getElementById('comment').value;
     let rating = document.getElementById('rating').value;
     if (comment && rating) {

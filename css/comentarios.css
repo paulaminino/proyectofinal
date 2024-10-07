@@ -1,45 +1,35 @@
-body {
+/*body {
     font-family: Verdana, serif;
     margin: 0;
     padding: 0;
-  }
+  }*/
   
-  .container {
+  .leave-section {
     display: flex;
     justify-content: space-between;
     padding: 20px;
   }
   
   .leave-rating {
-    background-color: #e9e9e9;
+    display: inline;
     padding: 20px;
     border-radius: 10px;
     width: 45%;
   }
   
-  h2 {
-    font-family: Verdana, serif;
-    font-size: 16px;
-    color: #212529;
-    margin-bottom: 15px;
-    font-weight: bold;
-  }
+ 
   
   .form-group {
     margin-bottom: 20px;
-    text-align: left;
-    position: absolute;
     top: 260px;
     left: 750px;
     font-weight: bold;
   
   }
   
-  .rating {
-    padding: 10px;
+  #rating {
     margin-bottom: 15px;
     border-radius: 8px;
-    background-color: #e9e9e9;
   }
   
   .stars {
@@ -47,7 +37,7 @@ body {
     font-size: 18px;
   }
   
-  p {
+ p {
     margin: 10px 0;
   }
   
@@ -61,14 +51,15 @@ body {
     font-weight: bold;
     margin-bottom: 5px;
     font-family: Verdana, serif;
+    width: 70%;
   }
   
   textarea {
-    width: 100%;
-    height: 60px;
+    max-width: 100%;
+    width: 70%;
+    height: 40%;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
   }
   
   .stars-input {
@@ -84,11 +75,6 @@ body {
     padding: 3px 20px;
     border-radius: 20px;
     cursor: pointer;
-    position: absolute;
-    top: 330px;
-    left: 930px;
-    width: 100px;
-    height: 30px;
   
   }
   
@@ -96,30 +82,24 @@ body {
     background-color: #F09100;
   }
   
-  /* Productos Relacionados */
-  .related-products {
-    margin-top: 30px;
-    padding: 20px;
+  #agregarComentario {
+    display: inline-block;
+    padding: 3% 15%;
+    font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+    color: #212529; /* Color gris */
+    width: 70%; 
   }
-  
-  .product-grid {
-    display: flex;
-    justify-content: space-between;
+
+  #nomUsuario {
+    width: 70%;
   }
-  
-  .product {
-    text-align: center;
-    margin: 0 10px;
+
+  .rating-section {
+    font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+    color: #212529; /* Color gris */
+    width: 70%; 
   }
-  
-  .product img {
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .product p {
-    margin-top: 10px;
-    font-size: 14px;
+
+  #comentariosGeneral {
+    
   }
