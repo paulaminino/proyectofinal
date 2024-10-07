@@ -175,64 +175,74 @@ function showComments(comments) {
   titulocalificacion.className = "tituloproducto";
   titulocalificacion.appendChild(document.createTextNode("Calificaciones de los usuarios"));
   calificacionesycomentarios.appendChild(titulocalificacion);
+  agregarComentarios(comments);
 
-  comments.forEach(comment => {
-    let calificaciones = document.createElement("div");
-    calificaciones.className = "calificaciones"; // Estilo para el bloque gris
-    
-    let calificacion = document.createElement("div");
-    calificacion.className = "usuarioScore";
-    calificacion.appendChild(document.createTextNode( () => mostrarRaitings(comment.score)));
-    calificaciones.appendChild(calificacion);
+  function agregarComentarios (comments){
+    for (let comment of comments) {
+      let calificaciones = document.createElement("div");
+      calificaciones.className = "calificaciones"; // Estilo para el bloque gris
+      
+      let calificacion = document.createElement("div");
+      calificacion.className = "usuarioScore";
+      mostrarRatings(comment.score);
+      calificaciones.appendChild(calificacion);
+  
+      function mostrarRatings(score) {
+            calificacion.innerHTML += `<div class="rating">
+                    <div class="stars">${'★'.repeat(score) + '☆'.repeat(5 - score)}</div></div>`;
+    } 
+  
+      /*let userraitings = document.createElement("div");
+      userraitings.className = "user-raitings"; 
+  
+      let rating = document.createElement("div");
+      rating.className = "raiting"; 
+  
+      let stars = document.createElement("div");
+      stars.className = "stars"; */
+  
+      let usuario = document.createElement("div");
+      usuario.className = "usuarioComentario";
+      usuario.appendChild(document.createTextNode(comment.user + ":"));
+      calificaciones.appendChild(usuario);
+  
+      let comentariodescription = document.createElement("div");
+      comentariodescription.className = "ComentarioDescripcion";
+      comentariodescription.appendChild(document.createTextNode(comment.description));
+      calificaciones.appendChild(comentariodescription);
+  
+      let fecha = document.createElement("div");
+      fecha.className = "fechaComentario";
+      fecha.appendChild(document.createTextNode(comment.dateTime));
+      calificaciones.appendChild(fecha);
+  
+      // Añadir el bloque de comentarios después de las imágenes
+      calificacionesycomentarios.appendChild(calificaciones);
+    };
 
-    /*let userraitings = document.createElement("div");
-    userraitings.className = "user-raitings"; 
+  }
 
-    let rating = document.createElement("div");
-    rating.className = "raiting"; 
+  document.querySelector('button[type="submit"]').onclick = function(e) {
+    e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
+    let nombre = document.getElementById('nombreUsuario').value;
+    let comment = document.getElementById('comment').value;
+    let rating = document.getElementById('rating').value;
+    if (comment && rating) {
+      let nuevoComentario = [];
+      nuevoComentario.push({product: PRODUCT_ID, score: rating, description: comment, user:nombre ,dateTime: new Date().toLocaleDateString()});
+      agregarComentarios(nuevoComentario);
+      document.getElementById('comment').value = ''; // Limpia el input de comentario
+      document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
+    }
+  }
 
-    let stars = document.createElement("div");
-    stars.className = "stars"; */
-
-    let usuario = document.createElement("div");
-    usuario.className = "usuarioComentario";
-    usuario.appendChild(document.createTextNode(comment.user + ":"));
-    calificaciones.appendChild(usuario);
-
-    let comentariodescription = document.createElement("div");
-    comentariodescription.className = "ComentarioDescripcion";
-    comentariodescription.appendChild(document.createTextNode(comment.description));
-    calificaciones.appendChild(comentariodescription);
-
-    let fecha = document.createElement("div");
-    fecha.className = "fechaComentario";
-    fecha.appendChild(document.createTextNode(comment.dateTime));
-    calificaciones.appendChild(fecha);
-
-    // Añadir el bloque de comentarios después de las imágenes
-    calificacionesycomentarios.appendChild(calificaciones);
-  });
+  
 }
 
-      function mostrarRatings(score) {
-    for (let r of score) {
-        calificacion.innerHTML += `<div class="rating">
-                <div class="stars">${'★'.repeat(r) + '☆'.repeat(5 - r)}</div></div>`;
-    }
-} 
+      
 
 // Envío del formulario
-document.querySelector('button[type="submit"]').onclick = function(e) {
-  e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
-  let comment = document.getElementById('comment').value;
-  let rating = document.getElementById('rating').value;
-  if (comment && rating) {
-    ratings.push({ username: 'Usuario', date: new Date().toLocaleDateString(), comment, rating: +rating });
-    mostrarRatings(); // Actualización de calificaciones
-    document.getElementById('comment').value = ''; // Limpia el input de comentario
-    document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
-  }
-}
+
 
 
 function respuesta (response) {
