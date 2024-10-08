@@ -229,7 +229,7 @@ function showComments(comments) {
     let rating = document.getElementById('rating').value;
     if (comment && rating) {
       let nuevoComentario = [];
-      nuevoComentario.push({product: PRODUCT_ID, score: rating, description: comment, user:nombre ,dateTime: new Date().toLocaleDateString()});
+      nuevoComentario.push({product: PRODUCT_ID, score: rating, description: comment, user:nombre ,dateTime: (new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString())});
       agregarComentarios(nuevoComentario);      
       document.getElementById('comment').value = ''; // Limpia el input de comentario
       document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
