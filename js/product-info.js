@@ -224,13 +224,13 @@ function showComments(comments) {
 
   document.querySelector('button[type="submit"]').onclick = function(e) {
     e.preventDefault(); // No deja que se envíe el formulario y se recargue la página
-    let nombre = document.getElementById('nomUsuario').value;
+    let nombre = localStorage.getItem("usuario");
     let comment = document.getElementById('comment').value;
     let rating = document.getElementById('rating').value;
     if (comment && rating) {
       let nuevoComentario = [];
       nuevoComentario.push({product: PRODUCT_ID, score: rating, description: comment, user:nombre ,dateTime: new Date().toLocaleDateString()});
-      agregarComentarios(nuevoComentario);
+      agregarComentarios(nuevoComentario);      
       document.getElementById('comment').value = ''; // Limpia el input de comentario
       document.getElementById('rating').value = '1'; // Resetea la calificación por estrellas
     }
