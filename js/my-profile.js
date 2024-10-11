@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    //INICIO Formulario
     const form = document.getElementById('form');
     const nombre = document.getElementById('nombre');
     const apellido = document.getElementById('apellido');
@@ -73,4 +75,53 @@ document.addEventListener('DOMContentLoaded', () => {
     if (apellidoGuardado) {
         apellido.value = apellidoGuardado;
     }
+
+    //FIN Formulario
+
+    //INICIO Imagen de Perfil
+    let NuevaImgPerfil = document.getElementById("file-input");
+    let imgPerfil = document.getElementById ("img-perfil");
+    /*let sinFoto = imgPerfil.src != "/img/foto-perfil.png";*/
+    imgPerfil.src = "/img/foto-perfil.png";
+    
+        const convertBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);    
+                fileReader.addEventListener('error', () => {
+                    reject(error);
+                }); 
+                fileReader.addEventListener('load', () => {
+                    resolve(fileReader.result);
+                });
+            });
+        }
+        
+        const uploadImage = async (event) => {
+            const file = event.target.files[0];
+            const base64 = await convertBase64(file);
+            cargarImagen (base64);
+        };
+
+        function cargarImagen (base64){            
+            imgPerfil.src = base64;
+            localStorage.setItem('imgPerfil', imgPerfil.src);
+            localStorage.setItem('File', base64);
+        }
+    
+      
+      NuevaImgPerfil.addEventListener("change", (file) => {
+        uploadImage(file);
+
+    let sinFoto = localStorage.getItem('imgPerfil') !== "";
+    console.log(sinFoto);
+
+    if (sinFoto) {
+        console.log("entro")
+        cargarImagen(localStorage.getItem('File'));
+    }
+    });
+   /*src=*/
+
+
 });
