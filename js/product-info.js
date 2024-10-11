@@ -292,12 +292,19 @@ toggleBtn.addEventListener('click', () => {
 body.classList.toggle('dark-mode');
 body.classList.toggle('light-mode');
 
-if (body.classList.contains('cdark-mode')) {
+if (body.classList.contains('dark-mode')) {
     toggleBtn.textContent - 'light-mode';
 } else {
 toggleBtn.textContent -'dark-mode';
 
 }
+
+let contenedorTodo = document.getElementById("div_contenedorTodo")
+let comentariosGeneral = document.getElementById("comentariosGeneral")
+let calificacionesycomentarios = document.getElementById("div_calificacionesycomentarios")
+let agregarComentario = document.getElementById("agregarComentario")
+let container = document.getElementById("container")
+let spinnerwrapper = document.getElementById("spinner-wrapper")
 
 });
 

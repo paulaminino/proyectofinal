@@ -73,4 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (apellidoGuardado) {
         apellido.value = apellidoGuardado;
     }
+    
+toggleBtn.addEventListener('click', () => {
+    const localStorage.setItem("modo", );
 });

@@ -12,14 +12,14 @@
     text-align: center;
   }
 
-  .light  .prev, .next {
+  .dark .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
-    color: #212529;
+    color: #d5dadf;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
@@ -34,8 +34,8 @@
     border-radius: 3px 0 0 3px;
   }
 
-  .light .prev:hover, .next:hover {
-    background-color: #212529;
+  .dark .prev:hover, .next:hover {
+    background-color: #8aaed1;
   }
 
   .fade {
@@ -51,13 +51,12 @@
   /*FIN CARRUSEL*/
 
   /*INICIO PRODUCTOS RELACIONADOS*/
-  .light .cadaRel {
-    border: 1px solid #ccc;
+  .dark .cadaRel {
+    border: 1px solid #b43a3a;
   }
   
-  .light .cadaRel:hover {
+  .dark .cadaRel:hover {
     border: 1px solid #777;
-   
   }
   
   .imgrelacionado {
@@ -86,5 +85,7 @@
     display: flex;
     justify-content: center
   }
+
+
 
   /*FIN PRODUCTOS RELACIONADOS*/
