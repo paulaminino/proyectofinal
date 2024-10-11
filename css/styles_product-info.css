@@ -86,5 +86,16 @@
     justify-content: center
   }
 
+  /* Modo día */
+body.light-mode {
+  background-color: white;
+  color: black;
+}
+
+/* Modo noche*/
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
 
   /*FIN PRODUCTOS RELACIONADOS*/

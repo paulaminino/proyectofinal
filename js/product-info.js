@@ -284,3 +284,22 @@ function setProdID(id) {
 }
 /*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 
+const toggleBtn document.getElementById('toggle-btn');
+const body document.body; I
+// Función para alternar entre modo claro y oscuro
+
+toggleBtn.addEventListener('click', () => {
+body.classList.toggle('dark-mode');
+body.classList.toggle('light-mode');
+
+if (body.classList.contains('cdark-mode')) {
+    toggleBtn.textContent - 'light-mode';
+} else {
+toggleBtn.textContent -'dark-mode';
+
+}
+
+});
+
+
+
