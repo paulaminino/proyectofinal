@@ -463,6 +463,20 @@ a.custom-card:hover {
   color: orange;
 }
 
+#btnmenu {
+background-image: linear-gradient(to right, #6c757d, #adb5bd);
+border: 2px solid #424549;
+border-radius: 5px;
+}
+
+#nom_usuario{
+color: #07090a;
+}
+
+.dropdown-menu {
+background-image: linear-gradient(to right, #6c757d, #adb5bd);
+}
+
 .oculto {
   display: none;
 }

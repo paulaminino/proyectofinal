@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
-    const dropdown = document.getElementById('prueba');
+    const dropdown = document.getElementById('btnmenu');
 
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
@@ -17,9 +17,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if (!localStorage.getItem("usuario")){
             dropdown.classList.add('oculto');
         }
-    
 
-    if (!sessionStorage.getItem("sesion")){
+    if (!sessionStorage.getItem("sesion")){ 
         alert("Detectamos que no iniciaste sesión, redirigiendo para iniciar sesión");
         window.location.href = "login.html"; 
           
