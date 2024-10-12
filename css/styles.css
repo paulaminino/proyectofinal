@@ -465,7 +465,7 @@ a.custom-card:hover {
 
 #btnmenu {
 background-image: linear-gradient(to right, #6c757d, #adb5bd);
-border: 2px solid #424549;
+border: 1px solid #424549;
 border-radius: 5px;
 }
 
@@ -473,8 +473,15 @@ border-radius: 5px;
 color: #07090a;
 }
 
+#nom_usuario:focus {
+ outline: none;
+ box-shadow: none;
+}
+
 .dropdown-menu {
 background-image: linear-gradient(to right, #6c757d, #adb5bd);
+border: 1px solid #424549;
+border-radius: 4px;
 }
 
 .oculto {
