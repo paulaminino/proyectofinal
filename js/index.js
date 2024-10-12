@@ -13,12 +13,11 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-
-    function hiddenmenu () {
-        if (sessionStorage.getItem("sesion")){
-            dropdown.classList.remove('oculto');
+ 
+        if (!localStorage.getItem("usuario")){
+            dropdown.classList.add('oculto');
         }
-    }
+    
 
     if (!sessionStorage.getItem("sesion")){
         alert("Detectamos que no iniciaste sesión, redirigiendo para iniciar sesión");
