@@ -81,10 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
     //INICIO Imagen de Perfil
     let NuevaImgPerfil = document.getElementById("file-input");
     let imgPerfil = document.getElementById ("img-perfil");
-    /*let sinFoto = imgPerfil.src != "/img/foto-perfil.png";*/
-    imgPerfil.src = "/img/foto-perfil.png";
     
-        const convertBase64 = (file) => {
+    if (!localStorage.getItem("imgData")){
+        localStorage.setItem("imgData", "")
+    }
+
+    if (imgPerfil.getAttribute("src") == "" && localStorage.getItem("imgData") == ""){
+        imgPerfil.src = "/img/foto-perfil.png";
+    } else {
+        imgPerfil.src = localStorage.getItem("imgData");
+    }
+    
+       const convertBase64 = (file) => {
             return new Promise((resolve, reject) => {
                 const fileReader = new FileReader();
                 fileReader.readAsDataURL(file);    
@@ -105,23 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function cargarImagen (base64){            
             imgPerfil.src = base64;
-            localStorage.setItem('imgPerfil', imgPerfil.src);
-            localStorage.setItem('File', base64);
+            guardarImagen (base64);
         }
-    
-      
+        
+        function guardarImagen (imgData) {
+            localStorage.setItem("imgData", imgData);
+        }
+
       NuevaImgPerfil.addEventListener("change", (file) => {
         uploadImage(file);
-
-    let sinFoto = localStorage.getItem('imgPerfil') !== "";
-    console.log(sinFoto);
-
-    if (sinFoto) {
-        console.log("entro")
-        cargarImagen(localStorage.getItem('File'));
-    }
     });
-   /*src=*/
 
 
 });

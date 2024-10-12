@@ -192,15 +192,6 @@ function showComments(comments) {
                     <div class="stars">${'★'.repeat(score) + '☆'.repeat(5 - score)}</div></div>`;
     } 
   
-      /*let userraitings = document.createElement("div");
-      userraitings.className = "user-raitings"; 
-  
-      let rating = document.createElement("div");
-      rating.className = "raiting"; 
-  
-      let stars = document.createElement("div");
-      stars.className = "stars"; */
-  
       let usuario = document.createElement("div");
       usuario.className = "usuarioComentario";
       usuario.appendChild(document.createTextNode(comment.user + ":"));
