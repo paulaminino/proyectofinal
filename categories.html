@@ -31,7 +31,15 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <span class="nav-link" id="nom_usuario"></span> <!-- Nombre Usuario en Barra: ENTREGA 2-->
+            <div class="dropdown" >
+              <a class="nav-link btn-secondary dropdown-toggle autoClose" id="nom_usuario" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              </a> <!-- Nombre Usuario en Barra: ENTREGA 2 / Transformamos el nombre de usuario en menú desplegable: ENTREGA 5-->
+              <ul class="dropdown-menu" >
+                <li><a class="dropdown-item" href="sell.html">Mi carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="#" id="closesession">Cerrar Sesión</a></li>
+              </ul>
+            </div>          
           </li>
         </ul>
       </div>

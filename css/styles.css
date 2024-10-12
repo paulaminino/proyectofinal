@@ -463,3 +463,6 @@ a.custom-card:hover {
   color: orange;
 }
 
+.oculto {
+  display: none;
+}
