@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
 /*Borramos nombre de usuario de localStorage al cerrar sesión: ENTREGA 5*/
 document.getElementById("closesession").addEventListener('click', function() {
         localStorage.removeItem("usuario");
+        sessionStorage.removeItem("sesion")
         window.location = "login.html";
 });
 
