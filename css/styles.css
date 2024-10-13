@@ -481,7 +481,12 @@ color: #07090a;
 .dropdown-menu {
 background-image: linear-gradient(to right, #6c757d, #adb5bd);
 border: 1px solid #424549;
-border-radius: 4px;
+border-radius: 6px;
+}
+
+.dropdown-item:focus {
+background-color: transparent;
+
 }
 
 .oculto {
