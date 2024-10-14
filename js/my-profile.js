@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form');
     const nombre = document.getElementById('nombre');
+    const segNombre = document.getElementById('seg-nombre');
     const apellido = document.getElementById('apellido');
+    const segApellido = document.getElementById('seg-apellido');
     const email = document.getElementById('email');
+    const telContacto = document.getElementById('tel-contacto');
 
     const userLogueado = sessionStorage.getItem('sesion');
     const userEmail = localStorage.getItem('usuario');
@@ -55,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isValid) {
             localStorage.setItem('nombre', nombre.value);
             localStorage.setItem('apellido', apellido.value);
+            localStorage.setItem('segNombre', segNombre.value);
+            localStorage.setItem('segApellido', segApellido.value);
+            localStorage.setItem('telContacto', telContacto.value);
             alert('Datos guardados');
         }
 
@@ -73,4 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (apellidoGuardado) {
         apellido.value = apellidoGuardado;
     }
+
+    const segNombreGuardado = localStorage.getItem('segNombre');
+    const segApellidoGuardado = localStorage.getItem('segApellido');
+    const telContactoGuardado = localStorage.getItem('telContacto');
+
+    if (segNombreGuardado) {
+        segNombre.value = segNombreGuardado;
+    } 
+
+    if (segApellidoGuardado) {
+        segApellido.value = segApellidoGuardado;
+    } 
+
+    if (telContactoGuardado) {
+        telContacto.value = telContactoGuardado;
+    } 
 });
