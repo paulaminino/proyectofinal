@@ -35,7 +35,7 @@
   }
 
   .dark .prev:hover, .next:hover {
-    background-color: #8aaed1;
+    background-color: #f1e8e8;
   }
 
   .fade {
@@ -52,7 +52,7 @@
 
   /*INICIO PRODUCTOS RELACIONADOS*/
   .dark .cadaRel {
-    border: 1px solid #b43a3a;
+    border: 1px solid #eed5d5;
   }
   
   .dark .cadaRel:hover {
