@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nombre.reportValidity();
         apellido.reportValidity();
         email.reportValidity();
-    });
 
     const nombreGuardado = localStorage.getItem('nombre');
     const apellidoGuardado = localStorage.getItem('apellido');
@@ -81,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (apellidoGuardado) {
         apellido.value = apellidoGuardado;
     }
+
   
   const segNombreGuardado = localStorage.getItem('segNombre');
     const segApellidoGuardado = localStorage.getItem('segApellido');
@@ -146,4 +146,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    const toggleBtn = document.getElementById('toggle-modonoche');
+
+    function isChecked() {
+        toggleBtn.checked = localStorage.getItem('modo') === 'dark';
+      }
+    
+    isChecked ();
+
+    
+
+    function cambiarModo () {
+        if (!localStorage.getItem("modo")){
+            localStorage.setItem ("modoOpuesto", "light")
+            return "dark"
+        } else {
+            if (localStorage.getItem("modo") == "light"){
+                localStorage.setItem ("modoOpuesto", "light")
+                return "dark"
+            } else {
+                localStorage.setItem ("modoOpuesto", "dark")
+                return "light"
+            }
+        }
+    }    
+
+toggleBtn.addEventListener('click', () => {
+    let modo = cambiarModo ();
+    localStorage.setItem("modo", modo);
+});
 });

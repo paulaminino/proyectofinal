@@ -1,0 +1,174 @@
+/*INICIO CARRUSEL*/
+div.dark .productocatego {
+  color: #ccc;
+}
+
+
+
+/* Comentarios Product-info */
+div.dark .calificaciones {
+  background-color: #0A1E53;
+}
+
+
+
+div.dark .prodRelacionados {
+  color: #ccc;
+}
+
+.dark #div_calificacionesycomentarios {
+  color: #ccc;
+}
+
+body.dark {
+  background-color: #051232;
+  color: #ccc;
+}
+
+
+  div.dark .prev, div.dark .next {
+    color: #051232;   
+    color: #ccc; 
+  }
+
+
+
+  .dark .prev:hover, div.dark .next:hover {
+    background-color: #0A1E53;
+    color: #ccc;
+
+  }
+
+  div.dark .cadaRel {
+    border: 1px solid #eed5d5;
+  }
+  
+  div.dark .cadaRel:hover {
+    border: 1px solid #0A1E53;
+  }
+
+  
+  div.dark .infoRel {
+    background-color: #0A1E53;
+    color: #ccc;
+  }
+  
+
+
+  div.dark textarea {
+ 
+    border: 1px solid #0A1E53;
+ 
+  }
+
+  div.dark button {
+    background-color: #0A1E53;
+    color: #ccc;
+  
+  }
+  div.dark button:hover {
+    background-color: #F09100;
+  }
+
+  div.dark #agregarComentario {
+    display: inline-block;
+    padding: 3% 15%;
+    font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+    color: #0A1E53;
+    width: 70%; 
+    color: #ccc;
+  }
+
+
+
+  div.dark .rating-section {
+
+    color: #0A1E53; 
+  }
+
+
+
+
+
+
+  /*FIN PRODUCTOS RELACIONADOS*/
+
+  /*INICIO CARRUSEL*/
+
+body.light {
+  background-color: (#ccc);
+}
+
+
+  div.light .prev, div.light .next {
+    color: #212529;
+    
+  }
+
+
+
+  div.light .prev:hover, div.dark .next:hover {
+    background-color: #212529;
+  }
+
+  
+  div.light .cadaRel {
+    border: 1px solid #ccc;
+  }
+  
+  div.light .cadaRel:hover {
+    border: 1px solid #777;
+   
+  }
+
+  div.light .calificaciones {
+    background-color: #f2f2f2; /* Fondo gris claro */
+  }
+  
+  
+  
+  
+  div.light .prodRelacionados {
+    color: #212529; /* Color gris */
+  }
+  
+  div.light #div_calificacionesycomentarios {
+    color: #212529; /* Color gris */
+  }
+  
+
+  
+  div.light .date {
+    color: gray;
+  }
+  
+ 
+  
+  div.light textarea {
+    border: 1px solid #ccc;
+  }
+ 
+  
+  div.light button {
+    background-color: #F09100;
+    color: white;
+  
+  }
+  
+  div.light button:hover {
+    background-color: #F09100;
+  }
+  
+  div.light #agregarComentario {
+    display: inline-block;
+    padding: 3% 15%;
+    font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+    color: #212529; /* Color gris */
+    width: 70%; 
+  }
+
+
+  div.light .rating-section {
+    color: #212529; /* Color gris */
+
+  }
