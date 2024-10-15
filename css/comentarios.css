@@ -68,7 +68,7 @@
     margin-bottom: 20px;
   }
   
-  button {
+  #botoncomentarios {
     background-color: #F09100;
     color: white;
     border: none;
@@ -78,7 +78,7 @@
   
   }
   
-  button:hover {
+  #botoncomentarios:hover {
     background-color: #F09100;
   }
   
