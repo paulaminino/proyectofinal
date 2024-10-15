@@ -128,12 +128,3 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
 
 let botonFiltro = document.getElementById("rangeFilterCount")
 botonFiltro.addEventListener("click",Filtrar);
-
-
-
-/*INICIO Nombre Usuario en Barra: ENTREGA 2*/
-if (sessionStorage.getItem("sesion")) {
-  let nombre = localStorage.getItem("usuario");
-  document.getElementById("nom_usuario").innerHTML = nombre;
-}
-/*FIN Nombre Usuario en Barra: ENTREGA 2*/
