@@ -54,17 +54,28 @@
 
   <main>
     <div class="columna">
-      <div class="div-img-perfil">
-        <img id="img-perfil" src="img/foto-perfil.png" alt="">
-        <button id="btn-editar-img">
-          <img id="editar-img" src="img/Edit.svg" alt="">
-        </button>
+
+      <div class="div-img-perfil">        
+        <img id="img-perfil" src="" alt="">
+
+          <button id="btn-editar-img">
+              <label for="file-input">
+                <img id="editar-img" src="/img/Edit.svg" alt="">
+              </label>              
+              <input id="file-input" type="file" style="display: none;" accept="image/*">
+          </button>
+
       </div>
+
       <div id="div-modonoche">
         <input type="checkbox" id="toggle-modonoche">
         <label for="toggle-modonoche" id="label-modonoche">
-          <img src="img/Sun.svg" alt="sol" class="sun">
-          <img src="img/Moon.svg" alt="luna" class="moon">
+
+          <div>
+          <img src="/img/Sun.svg" alt="sol" class="sun">
+          <img src="/img/Moon.svg" alt="luna" class="moon">
+          </div>
+
         </label>
       </div>
     </div>
