@@ -176,3 +176,4 @@ toggleBtn.addEventListener('click', () => {
     localStorage.setItem("modo", modo);
 });
 });
+});
