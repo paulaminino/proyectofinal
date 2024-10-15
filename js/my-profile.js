@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (imgPerfil.getAttribute("src") == "" && localStorage.getItem("imgData") == ""){
-        imgPerfil.src = "/img/foto-perfil.png";
+        imgPerfil.src = "img/foto-perfil.png";
     } else {
         imgPerfil.src = localStorage.getItem("imgData");
     }
