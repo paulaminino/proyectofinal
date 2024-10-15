@@ -1,9 +1,3 @@
-/*INICIO Nombre Usuario en Barra: ENTREGA 2*/
-if (sessionStorage.getItem("sesion")) {
-  let nombre = localStorage.getItem("usuario");
-  document.getElementById("nom_usuario").innerHTML = nombre;
-}
-/*FIN Nombre Usuario en Barra: ENTREGA 2*/
 
 let slideIndex = 1;
 
@@ -191,15 +185,6 @@ function showComments(comments) {
             calificacion.innerHTML += `<div class="rating">
                     <div class="stars">${'★'.repeat(score) + '☆'.repeat(5 - score)}</div></div>`;
     } 
-  
-      /*let userraitings = document.createElement("div");
-      userraitings.className = "user-raitings"; 
-  
-      let rating = document.createElement("div");
-      rating.className = "raiting"; 
-  
-      let stars = document.createElement("div");
-      stars.className = "stars"; */
   
       let usuario = document.createElement("div");
       usuario.className = "usuarioComentario";

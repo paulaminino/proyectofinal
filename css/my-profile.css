@@ -24,6 +24,7 @@ main {
     max-width: 250px; 
     height: auto;
     padding-bottom: 20px;
+    
 }
 
 #btn-editar-img {
@@ -34,11 +35,11 @@ main {
     height: 50px;
     border-radius: 50%;
     background: #F09100;
-    cursor: pointer;
 }
 
 #editar-img {
     width: 90%;
+    cursor: pointer;
 }
 
 
@@ -85,7 +86,7 @@ main {
     width: 32px;
 }
 
-label img {
+label div img {
     position: absolute;
     width: 16px;
     top: 5.5px;
@@ -126,3 +127,8 @@ label img.moon {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.image-upload>input {
+    display: none;
+  }
+  
