@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (telContactoGuardado) {
         telContacto.value = telContactoGuardado;
     } 
-  
+});
   
 
     let NuevaImgPerfil = document.getElementById("file-input");
@@ -175,5 +175,5 @@ toggleBtn.addEventListener('click', () => {
     let modo = cambiarModo ();
     localStorage.setItem("modo", modo);
 });
-});
+
 });
