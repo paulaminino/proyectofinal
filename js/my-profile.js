@@ -73,7 +73,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (apellidoGuardado) {
         apellido.value = apellidoGuardado;
     }
+
+   
+
+    const toggleBtn = document.getElementById('toggle-modonoche');
+
+    function isChecked() {
+        toggleBtn.checked = localStorage.getItem('modo') === 'dark';
+      }
     
+    isChecked ();
+
+    
+
+    function cambiarModo () {
+        if (!localStorage.getItem("modo")){
+            localStorage.setItem ("modoOpuesto", "light")
+            return "dark"
+        } else {
+            if (localStorage.getItem("modo") == "light"){
+                localStorage.setItem ("modoOpuesto", "light")
+                return "dark"
+            } else {
+                localStorage.setItem ("modoOpuesto", "dark")
+                return "light"
+            }
+        }
+    }    
+
 toggleBtn.addEventListener('click', () => {
-    const localStorage.setItem("modo", );
+    let modo = cambiarModo ();
+    localStorage.setItem("modo", modo);
+});
 });
