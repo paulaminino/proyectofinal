@@ -175,14 +175,6 @@ document.getElementById("sortByCount").addEventListener("click", ordenrelev);
 
 mostrarProductos();
 
-/*INICIO Nombre Usuario en Barra: ENTREGA 2*/
-if (sessionStorage.getItem("sesion")) {
-  let nombre = localStorage.getItem("usuario");
-  document.getElementById("nom_usuario").innerHTML = nombre;
-}
-/*FIN Nombre Usuario en Barra: ENTREGA 2*/
-
-
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 function setProdID(id) {
   localStorage.setItem("prodID", id);

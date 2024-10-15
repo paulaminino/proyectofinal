@@ -68,7 +68,7 @@
     margin-bottom: 20px;
   }
   
-  button {
+  #botoncomentarios {
     background-color: #F09100;
     color: white;
     border: none;
@@ -78,7 +78,7 @@
   
   }
   
-  button:hover {
+  #botoncomentarios:hover {
     background-color: #F09100;
   }
   
@@ -98,8 +98,4 @@
     font-size: 15px; /* Tamaño de fuente para la descripción del producto */
     color: #212529; /* Color gris */
     width: 70%; 
-  }
-
-  #comentariosGeneral {
-    
   }
