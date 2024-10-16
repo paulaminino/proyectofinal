@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
         apellido.reportValidity();
         email.reportValidity();
 
+    });
+
     const nombreGuardado = localStorage.getItem('nombre');
     const apellidoGuardado = localStorage.getItem('apellido');
 
@@ -97,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (telContactoGuardado) {
         telContacto.value = telContactoGuardado;
     } 
-});
   
 
     let NuevaImgPerfil = document.getElementById("file-input");
