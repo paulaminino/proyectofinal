@@ -178,6 +178,12 @@ mostrarProductos();
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 function setProdID(id) {
   localStorage.setItem("prodID", id);
+  
+  /*PROVISIONAL*/
+  localStorage.setItem("CantCarrito", 1);
+  localStorage.setItem("IDProdCarrito", id);
+  
+
   window.location = "product-info.html";
 }
 /*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/

@@ -9,7 +9,7 @@ if (localStorage.getItem("usuario")){
     <button class="nav-link btn dropdown-toggle autoClose" id="nom_usuario"  href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     </button> <!-- Nombre Usuario en Barra: ENTREGA 2 / Transformamos el nombre de usuario en menú desplegable: ENTREGA 5-->
     <ul class="dropdown-menu" id="dropdown2">
-      <li><a class="dropdown-item" href="sell.html">Mi carrito</a></li>
+      <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
       <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
       <li><a class="dropdown-item" href="#" id="closesession">Cerrar Sesión</a></li>
     </ul>
