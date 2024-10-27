@@ -159,6 +159,25 @@ post.addEventListener ("click", function() {
 
 }
 
+// BOTÓN COMPRAR
+
+function comprarProducto() {
+  // Guardar el ID del producto
+  const prodID = localStorage.getItem("prodID");
+  localStorage.setItem("IDProdCarrito", prodID);
+  // Guardar la cantidad del producto, le asignamos solo 1
+  localStorage.setItem("cantProd", 1);
+  // redirige a la página de carrito
+  window.location = "cart.html";
+}
+
+const Botoncomprar = document.getElementById("botonComprar");
+Botoncomprar.addEventListener("click", function() {
+  comprarProducto(); 
+});
+
+
+
 // Comentarios
 
 let PRODUCT_ID = localStorage.getItem("prodID");
