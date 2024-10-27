@@ -97,3 +97,90 @@
     font-size: 15px; /* Tamaño de fuente para la descripción del producto */
     width: 70%; 
   }
+
+/*Media query para tablet*/
+@media (max-width: 768px) {
+  .leave-section {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .leave-rating {
+    width: 100%; 
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    top: auto;
+    left: auto;
+    margin: 0 0 20px 0;
+  }
+
+  #rating, .stars-input {
+    font-size: 16px;
+  }
+
+  textarea {
+    width: 100%; 
+    height: 100px;
+  }
+
+  #botoncomentarios {
+    width: 100%; 
+    padding: 10px;
+  }
+
+  #agregarComentario {
+    width: 70%; 
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .rating-section {
+    width: 100%; 
+    font-size: 16px;
+  }
+}
+
+/*Media query para smartphone pequeño*/
+@media (max-width: 320px) {
+  .leave-section {
+    padding: 5px;
+  }
+
+  .leave-rating {
+    width: 100%; 
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    font-size: 14px;
+  }
+
+  #rating {
+    font-size: 14px;
+  }
+
+  textarea {
+    width: 100%; 
+    height: 80px; 
+  }
+
+  #botoncomentarios {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%; 
+  }
+
+  #agregarComentario {
+    padding: 10px;
+    width: 70%; 
+    font-size: 14px;
+    margin: 0 auto;
+  }
+
+  .rating-section {
+    width: 100%; 
+    font-size: 14px; 
+  }
+}

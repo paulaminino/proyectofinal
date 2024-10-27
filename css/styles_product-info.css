@@ -86,3 +86,73 @@
   }
 
   /*FIN PRODUCTOS RELACIONADOS*/
+
+  /*Ajuste de imágenes en el carrusel para que no se corten*/
+.galeria img {
+  width: 100%; 
+  height: auto; 
+  object-fit: contain; 
+}
+
+/*Media query para tablet*/
+@media (max-width: 768px) {
+  .galeria {
+      max-width: 100%; 
+  }
+
+  .cadaRel {
+      width: 48%; 
+      margin: 1%;
+  }
+
+  .prev, .next {
+      font-size: 16px;
+      padding: 10px;
+  }
+
+  #agregarComentario {
+      padding: 15px;
+  }
+
+  #botoncomentarios {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+  }
+}
+
+/*Media query para smartphone pequeño*/
+@media (max-width: 320px) {
+  .galeria {
+      max-width: 100%;
+  }
+
+  .cadaRel {
+      width: 100%;
+      margin: 0 0 15px 0;
+  }
+
+  .prev, .next {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  #agregarComentario {
+      padding: 10px;
+  }
+
+  #botoncomentarios {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .rating-section .stars,
+  .stars-input {
+      font-size: 14px;
+  }
+
+  #div_contenedorTodo, #comentariosGeneral, #div_calificacionesycomentarios {
+      padding: 0 10px;
+  }
+}
