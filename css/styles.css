@@ -124,6 +124,8 @@ width: auto;
   background-color: #f2f2f2; /* Fondo gris claro */
   padding: 10px;
   margin-top: 20px;
+  max-width: 100%; 
+  min-width: 200px; /*Para que los comentarios no queden demasiado pequeños*/
 }
 
 .fechaComentario {
@@ -143,7 +145,8 @@ width: auto;
   padding: 3% 15%;
   font-size: 15px; /* Tamaño de fuente para la descripción del producto */
   color: #212529; /* Color gris */
-  width: 55%; 
+  max-width: 55%;
+  min-width: 200px; /*Para que los comentarios no queden demasiado pequeños*/
 }
 
 /* Productos Relacionados */
@@ -379,3 +382,57 @@ background-color: transparent;
 
 }
 /*Fin de los estilos del menú desplegable*/
+
+/*Media queries para imagen de encabezado*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .jumbotron {
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .jumbotron .container {
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .jumbotron .lead {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron {
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .jumbotron .container {
+    padding: 1.5rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .jumbotron .lead {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .jumbotron {
+    height: 25vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .jumbotron .container {
+    padding: 1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .jumbotron .lead {
+    font-size: 20px;
+  }
+}
