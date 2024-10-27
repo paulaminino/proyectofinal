@@ -132,3 +132,56 @@ label img.moon {
     display: none;
   }
   
+/*Media query para tablet*/
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+        flex-direction: column; 
+    }
+
+    .columna {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+
+    #img-perfil {
+        max-width: 200px; 
+    }
+
+    #guardar-cambios {
+        width: 100%; 
+    }
+}
+
+/*Media query para smartphone pequeño*/
+@media (max-width: 320px) {
+    #img-perfil {
+        max-width: 150px; 
+    }
+
+    #div-modonoche {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    #guardar-cambios {
+        width: 100%; 
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #container-formulario {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .form-label {
+        font-size: 14px; 
+    }
+
+    .form-control {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
