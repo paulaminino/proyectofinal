@@ -97,6 +97,35 @@ function showData (item) {
       contenedorTodo.appendChild(prod);
       //FIN BLOQUE PRODUCTO//
 
+      
+      // BOTÓN COMPRAR
+
+      let botonComprar = document.createElement("button");
+      botonComprar.id = "botonComprar";
+      botonComprar.className = "comprarproducto";
+      
+      let textoBoton = document.createTextNode("Comprar");
+      botonComprar.appendChild(textoBoton);
+
+
+      function comprarProducto() {
+        // Guardar el ID del producto
+        const prodID = localStorage.getItem("prodID");
+        localStorage.setItem("IDProdCarrito", prodID);
+        // Guardar la cantidad del producto, le asignamos solo 1
+        localStorage.setItem("cantProd", 1);
+        // redirige a la página de carrito
+        window.location = "cart.html";
+      }
+
+      contenedorTodo.appendChild(botonComprar);
+
+
+      const Botoncomprar = document.getElementById("botonComprar");
+      Botoncomprar.addEventListener("click", function() {
+        comprarProducto(); 
+      });
+
       //INICIO PRODUCTOS RELACIONADOS//      
       let prodrelacionados = document.createElement("div");
       prodrelacionados.className = "prodRelacionados";
@@ -158,25 +187,6 @@ post.addEventListener ("click", function() {
 });
 
 }
-
-// BOTÓN COMPRAR
-
-function comprarProducto() {
-  // Guardar el ID del producto
-  const prodID = localStorage.getItem("prodID");
-  localStorage.setItem("IDProdCarrito", prodID);
-  // Guardar la cantidad del producto, le asignamos solo 1
-  localStorage.setItem("cantProd", 1);
-  // redirige a la página de carrito
-  window.location = "cart.html";
-}
-
-const Botoncomprar = document.getElementById("botonComprar");
-Botoncomprar.addEventListener("click", function() {
-  comprarProducto(); 
-});
-
-
 
 // Comentarios
 
