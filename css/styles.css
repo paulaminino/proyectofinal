@@ -379,3 +379,14 @@ background-color: transparent;
 
 }
 /*Fin de los estilos del menú desplegable*/
+
+.productoCarrito{
+  padding: 0 15%;
+  font-size: 15px; /* Tamaño de fuente para la descripción del producto */
+  color: #212529; /* Color gris */
+  width: 100%; 
+  align-items: center; /* Alinea verticalmente el contenido al centro */
+  width: 100%; /* Cada producto ocupa todo el ancho disponible dentro de .catalogo */
+  display: flex; 
+}
+
