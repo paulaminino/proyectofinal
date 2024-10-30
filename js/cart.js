@@ -79,6 +79,8 @@ function MostrarProductosCarro (){
     
     let boton = document.getElementById("guardarCant");
     boton.addEventListener('click', guardarCant);
+    alert("El producto fue agregado a su carrito");
+    agregarBadges()
 
     }
 
@@ -105,7 +107,11 @@ function MostrarProductosCarro (){
 
         
     }
-
+    function agregarBadges() {
+        const prueba = localStorage.getItem("IDProdCarrito");
+        const cuenta = prueba.reduce((acum, current) => acum + current.cantidad, 0);
+        document.getElementById('cuentaCarrito').innerText = cuenta;
+      }
     
 }
 
