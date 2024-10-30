@@ -101,14 +101,17 @@ function MostrarProductosCarro (){
       }
 
     if (!carroVacio) {
-        let idProductoCarrito = localStorage.getItem("IDProdCarrito");
-        let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito}.json`; 50921
-        mostrarProductosC (DATA_URL);
+        let arregloProd = JSON.parse(localStorage.getItem("IDProdCarrito"));
+        for (idProductoCarrito of arregloProd){
+            let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito}.json`; 50921
+            mostrarProductosC (DATA_URL);
+        }
+        
 
         
     }
     function agregarBadges() {
-        const prueba = localStorage.getItem("IDProdCarrito");
+        
         const cuenta = prueba.reduce((acum, current) => acum + current.cantidad, 0);
         document.getElementById('cuentaCarrito').innerText = cuenta;
       }
