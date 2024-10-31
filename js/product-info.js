@@ -328,8 +328,8 @@ function comprarProducto() {
   }
   // Guardar el arreglo actualizado en el localStorage
   localStorage.setItem("IDProdCarrito", JSON.stringify(arreglo));
-
-
+  localStorage.setItem("CantCarrito", 1);
+  
   localStorage.setItem("cantProd", 1);
   // redirige a la página de carrito
   window.location = "cart.html";

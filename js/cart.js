@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let carroVacio = true;
     let contenedorTodo  = document.getElementById("productosAComprar");
-
+    
 function CarritoVacio (){
     if (!localStorage.getItem("CantCarrito") || localStorage.getItem("CantCarrito") == "" || localStorage.getItem("CantCarrito") == 0){
         alert("Detectamos que no tenes productos en tu carrito");
@@ -79,7 +79,6 @@ function MostrarProductosCarro (){
     
     let boton = document.getElementById("guardarCant");
     boton.addEventListener('click', guardarCant);
-    alert("El producto fue agregado a su carrito");
     agregarBadges()
 
     }
@@ -110,24 +109,28 @@ function MostrarProductosCarro (){
 
         
     }
-    function agregarBadges() {
-        
-        const cuenta = prueba.reduce((acum, current) => acum + current.cantidad, 0);
-        document.getElementById('cuentaCarrito').innerText = cuenta;
-      }
-    
 }
 
 if (!localStorage.getItem ("cantProd")){
         localStorage.setItem ("cantProd", 1)
     }
 
+    function agregarBadges() {
+        let arreglo = JSON.parse(localStorage.getItem("cantProd")) || []; 
+  if (!Array.isArray(arreglo)) {
+    arreglo = [];
+  }
+
+      arreglo.push(1);
+      localStorage.setItem("cantProd", JSON.stringify(arreglo));
+
+        const total = arreglo.reduce((total, producto) => total + producto, 0);
+        document.getElementById("cuentacarrito").innerText = total;
+
+      }
 
 CarritoVacio ();
 MostrarProductosCarro ();
-
-
-
 
 
 });
