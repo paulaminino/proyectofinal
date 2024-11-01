@@ -42,11 +42,32 @@ function MostrarProductosCarro (){
                 costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
                 textodiv.appendChild(costo);
 
-                textodiv.innerHTML += `<form action=>
+                /*textodiv.innerHTML += `<form action=>
                 <label for="cantidad">Cantidad:</label>
                 <input type="number" id="cantidad${item.id}" onchange = "guardarCant(${item.id})" name="cantidad" min="0"placeholder="1">
                 <button class="btn" type="button" id="guardarCant">Guardar</button>
-                </form>`
+                </form>`*/
+
+                let titulocant = document.createElement("div"); /* Texto Cantidad: -------------------- !!*/
+                titulocant.className = "descripcion"
+                titulocant.appendChild(document.createTextNode("Cantidad:"));
+                textodiv.appendChild(titulocant); 
+
+                let carrito = JSON.parse(localStorage.getItem("carrito"));
+                let producto = carrito.find(producto => producto.id == item.id);
+
+                let input = document.createElement('input');
+                input.type = 'number';
+                input.id = 'cantidad' + item.id; // Generar un ID único
+                input.placeholder = '1';
+                if (localStorage.getItem ("carrito")){
+                    input.value = producto.cantidad;}
+                textodiv.appendChild(input);
+                
+                // Asignar el evento onchange
+                input.onchange = function() {
+                    guardarCant(input.id, item.id);
+               };
 
                  let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
                 titulosubtotal.className = "descripcion"
@@ -55,8 +76,6 @@ function MostrarProductosCarro (){
 
                 let subtotal = document.createElement("div");
                 subtotal.className = "descripcion";
-                let carrito = JSON.parse(localStorage.getItem("carrito"));
-                let producto = carrito.find(producto => producto.id == item.id);
                 let cant = parseInt(producto.cantidad);
                 let sub = item.cost*cant;
                 subtotal.appendChild(document.createTextNode(item.currency + " " + sub));
@@ -73,15 +92,19 @@ function MostrarProductosCarro (){
 
     /*let inputCant = document.getElementById("cantidad");
     if (localStorage.getItem ("cantProd")){
-        inputCant.value = localStorage.getItem ("cantProd");
-    }*/
+        inputCant.value = localStorage.getItem ("cantProd");*/
 
-    function guardarCant (id) {
+
+
+    function guardarCant (inputID, productoID) {
         let carrito = JSON.parse(localStorage.getItem("carrito"));
-        let inputCant = document.getElementById("cantidad${id}");
-        carrito.find(producto => producto.id === id).cantidad = inputCant.value
+        let inputCant = document.getElementById(inputID);
+        let producto = carrito.find(producto => producto.id == productoID);
+        producto.cantidad = inputCant.value
+        localStorage.setItem("carrito", JSON.stringify(carrito));
         subtotal.removeChild(subtotal.firstChild);
         subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*inputCant.value));
+        agregarBadges();
     }
     
     /*let boton = document.getElementById("guardarCant");
@@ -124,6 +147,13 @@ function MostrarProductosCarro (){
 
 CarritoVacio ();
 MostrarProductosCarro ();
+
+function agregarBadges() {
+    let arreglo = JSON.parse(localStorage.getItem("carrito")) || [];
+    const total = arreglo.reduce((total, producto) => total + parseInt(producto.cantidad), 0);
+    document.getElementById("cuentacarrito").innerText = total;
+  
+  }
 
 
 });

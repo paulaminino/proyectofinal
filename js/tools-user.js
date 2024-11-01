@@ -35,11 +35,12 @@ document.getElementById("closesession").addEventListener('click', function() {
 
 function agregarBadges() {
   let arreglo = JSON.parse(localStorage.getItem("carrito")) || [];
-  const total = arreglo.reduce((total, producto) => total + producto.cantidad, 0);
+  const total = arreglo.reduce((total, producto) => total + parseInt(producto.cantidad), 0);
   document.getElementById("cuentacarrito").innerText = total;
 
 }
 
 agregarBadges();
+
 
 });
