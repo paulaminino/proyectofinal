@@ -33,4 +33,13 @@ document.getElementById("closesession").addEventListener('click', function() {
     window.location = "login.html";
 });
 
+function agregarBadges() {
+  let arreglo = JSON.parse(localStorage.getItem("carrito")) || [];
+  const total = arreglo.reduce((total, producto) => total + producto.cantidad, 0);
+  document.getElementById("cuentacarrito").innerText = total;
+
+}
+
+agregarBadges();
+
 });

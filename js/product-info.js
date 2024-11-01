@@ -314,8 +314,8 @@ if (localStorage.getItem("modo")){
 
 
 function comprarProducto() {
-  let productoID = localStorage.getItem("prodID");
-  // Obtener el arreglo existente del localStorage o crear uno nuevo
+  /*let productoID = localStorage.getItem("prodID");
+  //Obtener el arreglo existente del localStorage o crear uno nuevo
   let arreglo = JSON.parse(localStorage.getItem("IDProdCarrito")) || [];
   // Verificar que arreglo sea un array 
   if (!Array.isArray(arreglo)) {
@@ -329,8 +329,25 @@ function comprarProducto() {
   // Guardar el arreglo actualizado en el localStorage
   localStorage.setItem("IDProdCarrito", JSON.stringify(arreglo));
   localStorage.setItem("CantCarrito", 1);
-  
-  localStorage.setItem("cantProd", 1);
+
+  let carrito = JSON.parse(localStorage.getItem("cantProd")) || []; 
+if (!Array.isArray(carrito)) {
+carrito = [];
+}
+
+carrito.push(1);
+localStorage.setItem("cantProd", JSON.stringify(carrito));*/
+
+let productoID = localStorage.getItem("prodID");
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+if (!Array.isArray(carrito)) {
+  carrito = [];
+  }
+  if (!carrito.find(item => item.id === productoID)){
+    carrito.push({ id: productoID, cantidad: 1 });
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  localStorage.setItem("CantCarrito", 1);
   // redirige a la página de carrito
   window.location = "cart.html";
 }

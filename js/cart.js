@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let carroVacio = true;
     let contenedorTodo  = document.getElementById("productosAComprar");
-    
+
 function CarritoVacio (){
     if (!localStorage.getItem("CantCarrito") || localStorage.getItem("CantCarrito") == "" || localStorage.getItem("CantCarrito") == 0){
         alert("Detectamos que no tenes productos en tu carrito");
@@ -44,7 +44,7 @@ function MostrarProductosCarro (){
 
                 textodiv.innerHTML += `<form action=>
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" min="0"placeholder="1">
+                <input type="number" id="cantidad${item.id}" onchange = "guardarCant(${item.id})" name="cantidad" min="0"placeholder="1">
                 <button class="btn" type="button" id="guardarCant">Guardar</button>
                 </form>`
 
@@ -55,31 +55,37 @@ function MostrarProductosCarro (){
 
                 let subtotal = document.createElement("div");
                 subtotal.className = "descripcion";
-                let cant = parseInt(localStorage.getItem("cantProd"));
+                let carrito = JSON.parse(localStorage.getItem("carrito"));
+                let producto = carrito.find(producto => producto.id == item.id);
+                let cant = parseInt(producto.cantidad);
                 let sub = item.cost*cant;
                 subtotal.appendChild(document.createTextNode(item.currency + " " + sub));
                 textodiv.appendChild(subtotal);
+/*
 
+
+
+*/
 
 
         prod.appendChild(textodiv);
     contenedorTodo.appendChild(prod);
 
-    let inputCant = document.getElementById("cantidad");
+    /*let inputCant = document.getElementById("cantidad");
     if (localStorage.getItem ("cantProd")){
         inputCant.value = localStorage.getItem ("cantProd");
-    }
+    }*/
 
-    function guardarCant () {
-        let inputCant = document.getElementById("cantidad");
-        localStorage.setItem ("cantProd", inputCant.value);
+    function guardarCant (id) {
+        let carrito = JSON.parse(localStorage.getItem("carrito"));
+        let inputCant = document.getElementById("cantidad${id}");
+        carrito.find(producto => producto.id === id).cantidad = inputCant.value
         subtotal.removeChild(subtotal.firstChild);
-        subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*parseInt(localStorage.getItem("cantProd"))));
+        subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*inputCant.value));
     }
     
-    let boton = document.getElementById("guardarCant");
-    boton.addEventListener('click', guardarCant);
-    agregarBadges()
+    /*let boton = document.getElementById("guardarCant");
+    boton.addEventListener('click', guardarCant);*/
 
     }
 
@@ -100,9 +106,9 @@ function MostrarProductosCarro (){
       }
 
     if (!carroVacio) {
-        let arregloProd = JSON.parse(localStorage.getItem("IDProdCarrito"));
+        let arregloProd = JSON.parse(localStorage.getItem("carrito"));
         for (idProductoCarrito of arregloProd){
-            let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito}.json`; 50921
+            let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito.id}.json`; 50921
             mostrarProductosC (DATA_URL);
         }
         
@@ -111,23 +117,10 @@ function MostrarProductosCarro (){
     }
 }
 
-if (!localStorage.getItem ("cantProd")){
+/*if (!localStorage.getItem ("cantProd")){
         localStorage.setItem ("cantProd", 1)
     }
-
-    function agregarBadges() {
-        let arreglo = JSON.parse(localStorage.getItem("cantProd")) || []; 
-  if (!Array.isArray(arreglo)) {
-    arreglo = [];
-  }
-
-      arreglo.push(1);
-      localStorage.setItem("cantProd", JSON.stringify(arreglo));
-
-        const total = arreglo.reduce((total, producto) => total + producto, 0);
-        document.getElementById("cuentacarrito").innerText = total;
-
-      }
+*/
 
 CarritoVacio ();
 MostrarProductosCarro ();
