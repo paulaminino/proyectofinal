@@ -314,40 +314,17 @@ if (localStorage.getItem("modo")){
 
 
 function comprarProducto() {
-  /*let productoID = localStorage.getItem("prodID");
-  //Obtener el arreglo existente del localStorage o crear uno nuevo
-  let arreglo = JSON.parse(localStorage.getItem("IDProdCarrito")) || [];
-  // Verificar que arreglo sea un array 
-  if (!Array.isArray(arreglo)) {
-    arreglo = [];
-  }
-  // Verificar si el ID ya está en el arreglo 
-  if (!arreglo.includes(productoID)) {
-      // Agregar el nuevo ID al arreglo
-      arreglo.push(productoID);
-  }
-  // Guardar el arreglo actualizado en el localStorage
-  localStorage.setItem("IDProdCarrito", JSON.stringify(arreglo));
-  localStorage.setItem("CantCarrito", 1);
-
-  let carrito = JSON.parse(localStorage.getItem("cantProd")) || []; 
-if (!Array.isArray(carrito)) {
-carrito = [];
-}
-
-carrito.push(1);
-localStorage.setItem("cantProd", JSON.stringify(carrito));*/
 
 let productoID = localStorage.getItem("prodID");
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-if (!Array.isArray(carrito)) {
+let carrito = JSON.parse(localStorage.getItem("carrito")) || []; // trae un arreglo de objetos con sus ID y cantidades
+if (!Array.isArray(carrito)) { // que si no existe, lo crea. En esta línea verifica que sea un arreglo
   carrito = [];
   }
-  if (!carrito.find(item => item.id === productoID)){
+  if (!carrito.find(item => item.id === productoID)){ // Si el producto no es parte del arreglo, lo agrega con -push
     carrito.push({ id: productoID, cantidad: 1 });
   }
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  localStorage.setItem("CantCarrito", 1);
+  localStorage.setItem("carrito", JSON.stringify(carrito)); // Se actualiza la información en Local Storage
+  localStorage.setItem("CantCarrito", 1); // El carrito no está vacío
   // redirige a la página de carrito
-  window.location = "cart.html";
+  window.location = "cart.html"; // redirige a página de cart
 }
