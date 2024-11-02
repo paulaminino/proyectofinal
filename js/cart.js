@@ -16,6 +16,7 @@ function MostrarProductosCarro (){
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
+        prod.classList.add("productoCarrito")
             let dvimg = document.createElement ("div");
             dvimg.className = "col-lg-4";
             let imagen = document.createElement ("img");
@@ -33,14 +34,15 @@ function MostrarProductosCarro (){
                 nombre.appendChild(document.createTextNode(item.name));
 
                 let titulocosto = document.createElement("div"); /* Texto Precio: -------------------- !!*/
-                titulocosto.className = "descripcion"
+                titulocosto.className = "tituloproducto"
                 titulocosto.appendChild(document.createTextNode("Precio:"));
                 textodiv.appendChild(titulocosto); 
 
                 let costo = document.createElement("div");
-                costo.className = "descripcion";            
+                costo.className = "descripcion";          
                 costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
                 textodiv.appendChild(costo);
+
 
                 /*textodiv.innerHTML += `<form action=>
                 <label for="cantidad">Cantidad:</label>
@@ -68,9 +70,11 @@ function MostrarProductosCarro (){
                 input.onchange = function() {
                     guardarCant(input.id, item.id);
                };
+               
+
 
                  let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
-                titulosubtotal.className = "descripcion"
+                titulosubtotal.className = "tituloproducto"
                 titulosubtotal.appendChild(document.createTextNode("Subtotal:"));
                 textodiv.appendChild(titulosubtotal); 
 
@@ -107,8 +111,6 @@ function MostrarProductosCarro (){
         agregarBadges();
     }
     
-    /*let boton = document.getElementById("guardarCant");
-    boton.addEventListener('click', guardarCant);*/
 
     }
 
