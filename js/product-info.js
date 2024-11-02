@@ -106,25 +106,10 @@ function showData (item) {
       
       let textoBoton = document.createTextNode("Comprar");
       botonComprar.appendChild(textoBoton);
-
-
-      function comprarProducto() {
-        // Guardar el ID del producto
-        const prodID = localStorage.getItem("prodID");
-        localStorage.setItem("IDProdCarrito", prodID);
-        // Guardar la cantidad del producto, le asignamos solo 1
-        localStorage.setItem("cantProd", 1);
-        // redirige a la página de carrito
-        window.location = "cart.html";
-      }
-
       contenedorTodo.appendChild(botonComprar);
 
 
-      const Botoncomprar = document.getElementById("botonComprar");
-      Botoncomprar.addEventListener("click", function() {
-        comprarProducto(); 
-      });
+      botonComprar.addEventListener('click', () => comprarProducto ());
 
       //INICIO PRODUCTOS RELACIONADOS//      
       let prodrelacionados = document.createElement("div");
@@ -328,3 +313,41 @@ if (localStorage.getItem("modo")){
 
 
 
+function comprarProducto() {
+  /*let productoID = localStorage.getItem("prodID");
+  //Obtener el arreglo existente del localStorage o crear uno nuevo
+  let arreglo = JSON.parse(localStorage.getItem("IDProdCarrito")) || [];
+  // Verificar que arreglo sea un array 
+  if (!Array.isArray(arreglo)) {
+    arreglo = [];
+  }
+  // Verificar si el ID ya está en el arreglo 
+  if (!arreglo.includes(productoID)) {
+      // Agregar el nuevo ID al arreglo
+      arreglo.push(productoID);
+  }
+  // Guardar el arreglo actualizado en el localStorage
+  localStorage.setItem("IDProdCarrito", JSON.stringify(arreglo));
+  localStorage.setItem("CantCarrito", 1);
+
+  let carrito = JSON.parse(localStorage.getItem("cantProd")) || []; 
+if (!Array.isArray(carrito)) {
+carrito = [];
+}
+
+carrito.push(1);
+localStorage.setItem("cantProd", JSON.stringify(carrito));*/
+
+let productoID = localStorage.getItem("prodID");
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+if (!Array.isArray(carrito)) {
+  carrito = [];
+  }
+  if (!carrito.find(item => item.id === productoID)){
+    carrito.push({ id: productoID, cantidad: 1 });
+  }
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  localStorage.setItem("CantCarrito", 1);
+  // redirige a la página de carrito
+  window.location = "cart.html";
+}
