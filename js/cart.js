@@ -26,7 +26,7 @@ function MostrarProductosCarro (){
         prod.appendChild(dvimg);
 
             let textodiv = document.createElement("div"); /* div para todo texto */
-            textodiv.className = "col-lg-7";             
+            textodiv.className = "col-lg-5";             
 
                 let nombre = document.createElement("div");
                 nombre.className = "nombreproducto";
@@ -70,10 +70,8 @@ function MostrarProductosCarro (){
                 input.onchange = function() {
                     guardarCant(input.id, item.id);
                };
-               
 
-
-                 let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
+                let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
                 titulosubtotal.className = "tituloproducto"
                 titulosubtotal.appendChild(document.createTextNode("Subtotal:"));
                 textodiv.appendChild(titulosubtotal); 
@@ -84,21 +82,44 @@ function MostrarProductosCarro (){
                 let sub = item.cost*cant;
                 subtotal.appendChild(document.createTextNode(item.currency + " " + sub));
                 textodiv.appendChild(subtotal);
-/*
+                prod.appendChild(textodiv);
 
 
 
-*/
+/*INICIO BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/
+
+       
+        let botondiv = document.createElement("div"); /* div para todo texto */
+        botondiv.className = "col-lg-2";  
+        let botonBorrar = document.createElement("button");
+        botonBorrar.id = "botonBorrar";
+        botonBorrar.className = "borrarProducto";
+        let textoBoton = document.createTextNode("Borrar");
+        botonBorrar.appendChild(textoBoton);
+        botondiv.appendChild(botonBorrar);
+        prod.appendChild(botondiv);
 
 
-        prod.appendChild(textodiv);
-    contenedorTodo.appendChild(prod);
+        /*FIN BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/   
+        
+        /*modificar el arreglo, Actualizar de forma sincrónico, Actualización en tiempo real, modificar subtotales, cantidades
+función tools, se llama en javascript carrito porque cuando se modifican las funciones también se modifica el badge*/
+        
+        function borrarProducto (arreglo, id) {
+            let producto = arreglo.find(producto => producto.id == id);
+            arreglo.filter(elemento => elemento != producto);
+            localStorage.setItem("carrito", JSON.stringify(arreglo));
+            contenedorTodo = "";
+            MostrarProductosCarro ();
+        }
+
+        botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));
 
     /*let inputCant = document.getElementById("cantidad");
     if (localStorage.getItem ("cantProd")){
-        inputCant.value = localStorage.getItem ("cantProd");*/
+    inputCant.value = localStorage.getItem ("cantProd");*/
 
-
+        contenedorTodo.appendChild(prod);
 
     function guardarCant (inputID, productoID) {
         let carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -159,3 +180,5 @@ function agregarBadges() {
 
 
 });
+
+
