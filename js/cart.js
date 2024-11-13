@@ -121,13 +121,13 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
             contenedorTodo.innerHTML = "";
             MostrarProductosCarro ();
             agregarBadges();
+            console.log(nuevoarreglo.length);
+            if (nuevoarreglo.length == 0){
+                localStorage.setItem("CantCarrito", 0);
+            }
         }
 
-    /*let inputCant = document.getElementById("cantidad");
-    if (localStorage.getItem ("cantProd")){
-    inputCant.value = localStorage.getItem ("cantProd");*/
-
-
+    
     function guardarCant (inputID, productoID) {
         let carrito = JSON.parse(localStorage.getItem("carrito"));
         let inputCant = document.getElementById(inputID);
@@ -170,10 +170,6 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
     }
 }
 
-/*if (!localStorage.getItem ("cantProd")){
-        localStorage.setItem ("cantProd", 1)
-    }
-*/
 
 CarritoVacio ();
 MostrarProductosCarro ();
