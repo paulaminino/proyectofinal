@@ -99,6 +99,11 @@ function MostrarProductosCarro (){
         botondiv.appendChild(botonBorrar);
         prod.appendChild(botondiv);
 
+        contenedorTodo.appendChild(prod);
+
+       /*botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));*/
+       botonBorrar.addEventListener('click', function() {
+        borrarProducto(carrito, producto.id)});
 
         /*FIN BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/   
         
@@ -107,19 +112,21 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
         
         function borrarProducto (arreglo, id) {
             let producto = arreglo.find(producto => producto.id == id);
+            console.log(id);
+            console.log(producto)
             arreglo.filter(elemento => elemento != producto);
+            console.log(arreglo);
+            console.log(localStorage.getItem("carrito"));
             localStorage.setItem("carrito", JSON.stringify(arreglo));
-            contenedorTodo = "";
+            console.log(localStorage.getItem("carrito"));
+            contenedorTodo.innerHTML = "";
             MostrarProductosCarro ();
         }
-
-        botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));
 
     /*let inputCant = document.getElementById("cantidad");
     if (localStorage.getItem ("cantProd")){
     inputCant.value = localStorage.getItem ("cantProd");*/
 
-        contenedorTodo.appendChild(prod);
 
     function guardarCant (inputID, productoID) {
         let carrito = JSON.parse(localStorage.getItem("carrito"));
