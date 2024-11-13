@@ -120,6 +120,7 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
             console.log(localStorage.getItem("carrito"));
             contenedorTodo.innerHTML = "";
             MostrarProductosCarro ();
+            agregarBadges();
         }
 
     /*let inputCant = document.getElementById("cantidad");
