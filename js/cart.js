@@ -43,13 +43,6 @@ function MostrarProductosCarro (){
                 costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
                 textodiv.appendChild(costo);
 
-
-                /*textodiv.innerHTML += `<form action=>
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad${item.id}" onchange = "guardarCant(${item.id})" name="cantidad" min="0"placeholder="1">
-                <button class="btn" type="button" id="guardarCant">Guardar</button>
-                </form>`*/
-
                 let titulocant = document.createElement("div"); /* Texto Cantidad: -------------------- !!*/
                 titulocant.className = "descripcion"
                 titulocant.appendChild(document.createTextNode("Cantidad:"));
@@ -60,7 +53,7 @@ function MostrarProductosCarro (){
 
                 let input = document.createElement('input');
                 input.type = 'number';
-                input.id = 'cantidad' + item.id; // Generar un ID único
+                input.id = 'cantidad' + item.id; // Generar un ID único según el ID del producto
                 input.placeholder = '1';
                 if (localStorage.getItem ("carrito")){
                     input.value = producto.cantidad;}
