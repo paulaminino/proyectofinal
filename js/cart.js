@@ -88,7 +88,6 @@ function MostrarProductosCarro (){
 
 /*INICIO BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/
 
-       
         let botondiv = document.createElement("div"); /* div para todo texto */
         botondiv.className = "col-lg-2";  
         let botonBorrar = document.createElement("button");
@@ -101,8 +100,8 @@ function MostrarProductosCarro (){
 
         contenedorTodo.appendChild(prod);
 
-       /*botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));*/
-       botonBorrar.addEventListener('click', function() {
+        /*botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));*/
+        botonBorrar.addEventListener('click', function() {
         borrarProducto(carrito, producto.id)});
 
         /*FIN BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/   
