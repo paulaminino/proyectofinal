@@ -40,15 +40,25 @@
       <h2>Mi Carrito</h2>
       <p class="lead">Verás aquí los productos seleccionados para comprar.</p>
     </div>
-    <div class="catalogo" >
+    <div class="catalogo">
       <div id="productosAComprar"></div>
     </div>
-     <!--Productos-->
-     <div class="catalogo">
+    <!-- Productos -->
+    <div class="catalogo">
       <div id="productos"></div>
     </div>
 
-    <!--Tipo de envío-->
+    <!-- Botones de tabs -->
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-button">Tipo de envío</button>
+        <button class="tab-button">Dirección de envío</button>
+        <button class="tab-button">Forma de pago</button>
+        <button class="tab-button">Costos</button>
+      </div>
+    </div>
+
+    <!-- Tipo de envío -->
     <div class="container">
       <h4>Tipo de envío</h4>
       <div class="div-tipo-envio">
@@ -61,7 +71,7 @@
       </div>
     </div>
 
-    <!--Dirección de envío-->
+    <!-- Dirección de envío -->
     <div class="container">
       <h4>Dirección de envío</h4>
       <form id="form-direccion">
@@ -75,26 +85,30 @@
       </form>
     </div>
 
-    <!--Forma de pago-->
-    <div class="container">
-      <h4>Forma de pago</h4>
-      <div class="div-forma-pago">
-        <input type="radio" class="input-pago" id="tarjeta-credito" name="forma-pago" value="tarjeta-credito" checked>
-        <label class="label-pago" for="tarjeta-credito">Tarjeta de crédito</label>
-        <input type="radio" class="input-pago" id="transferencia" name="forma-pago" value="transferencia">
-        <label class="label-pago" for="transferencia">Transferencia bancaria</label>
+    <!-- Contenedor para estilos -->
+    <div class="container row-pago-costos">
+      <!-- Forma de pago -->
+      <div class="col">
+        <h4>Forma de pago</h4>
+        <div>
+          <input type="radio" class="input-pago" id="tarjeta-credito" name="forma-pago" value="tarjeta-credito" checked>
+          <label class="label-pago" for="tarjeta-credito">Tarjeta de crédito</label>
+          <br>
+          <input type="radio" class="input-pago" id="transferencia" name="forma-pago" value="transferencia">
+          <label class="label-pago" for="transferencia">Transferencia bancaria</label>
+        </div>
+      </div>
+
+      <!-- Costos -->
+      <div class="col">
+        <h4>Costos</h4>
+        <p>Subtotal: <span id="subtotal">$0.00</span></p>
+        <p>Costo de envío: <span id="costo-envio">$0.00</span></p>
+        <p>Total: <span id="costo-total">$0.00</span></p>
       </div>
     </div>
 
-    <!--Costos-->
-    <div class="container">
-      <h4>Costos</h4>
-      <p>Subtotal: <span id="subtotal">$0.00</span></p>
-      <p>Costo de envío: <span id="costo-envio">$0.00</span></p>
-      <p>Total: <span id="costo-total">$0.00</span></p>
-    </div>
-
-    <!--Finalizar compra (btn)-->
+    <!-- Finalizar compra (btn) -->
     <div class="container">
       <button class="btn-finalizar-compra" id="finalizar-compra">Finalizar compra</button>
     </div>
