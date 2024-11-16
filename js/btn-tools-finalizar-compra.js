@@ -69,7 +69,7 @@ function formadepago (){
 }
 
 // La cantidad para cada producto deberá estar definida y ser mayor a 0.
-function cantidad (){
+function cant (){
     if (cantidad.value <= 0) {
         alert ('La cantidad del producto esta en 0');
         return false;
@@ -78,9 +78,11 @@ function cantidad (){
 }
 
 function validacion (){
-    if (direccion () && formadepago() && formenvio () && cantidad){
+    if (direccion () && formadepago() && formenvio () && cant()){
         alert ('Su compra se realizó exitosamente');
+        return false;
     }
+    return true;
 }
 
 btnCompra.addEventListener('click', validacion);
