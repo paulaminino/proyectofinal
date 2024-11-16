@@ -11,61 +11,78 @@ const btnCompra = document.getElementById('finalizar-compra');
 
 // Los campos asociados a la dirección no podrán estar vacíos
 // "Departamento", "Localidad", "Calle", "Número" y "Esquina".
-function direccion (){
-    if (departamento.value === '') {
-        nombre.classList.add('is-invalid');
-        alert ('Debe ingresar una departamento');
-    } else {
-        if (localidad.value === '') {
-            alert('Debe ingresar una localidad')
-        } else {
-            if (calle.value === ''){
-                alert('Debe ingresar una calle')
-            } else {
-                if (num.value === ''){
-                    alert('Debe ingresar el número de puerta')
-                } else {
-                    if (esquina.value === '') {
-                        alert ('Debe ingresar el nombre de la calle de la esquina')
-                    }
-                }
-            }
-        }
-    }
+function direccion() { 
+    let isValid = true; 
+    
+    if (departamento.value === '') { 
+    departamento.setCustomValidity('Debe ingresar un departamento'); 
+    isValid = false; 
+} else { 
+    departamento.setCustomValidity(''); 
+} 
+
+if (localidad.value === '') { 
+    localidad.setCustomValidity('Debe ingresar una localidad'); 
+    isValid = false; 
+} else { 
+    localidad.setCustomValidity(''); 
+} 
+
+if (calle.value === '') { 
+    calle.setCustomValidity('Debe ingresar una calle'); 
+    isValid = false; 
+} else { 
+    calle.setCustomValidity(''); 
+} 
+if (num.value === '') { 
+    num.setCustomValidity('Debe ingresar el número de puerta'); 
+    isValid = false; 
+} else { 
+    num.setCustomValidity('');
+ } 
+ if (esquina.value === '') { 
+    esquina.setCustomValidity('Debe ingresar el nombre de la calle de la esquina'); 
+    isValid = false; 
+} else { 
+    esquina.setCustomValidity(''); 
+} 
+return isValid;    
 }
 
 // Deberá estar seleccionada la forma de envío.
 function formenvio (){
     if (!document.querySelector('input[name="tipo-envio"]:checked')) {
-        alert ('Debe seleccionar una forma de envío')
+        alert ('Debe seleccionar una forma de envío');
+        return false;
     }
+    return true;
 }
 
 // Los campos para la forma de pago seleccionada no podrán estar vacíos.
 // Deberá haberse seleccionado una forma de pago.
 function formadepago (){
     if ( !document.querySelector('input[name="forma-pago"]:checked')){
-        alert ('Debe seleccionar una forma de pago')
+        alert ('Debe seleccionar una forma de pago');
+        return false;
     }
+    return true;
 }
 
 // La cantidad para cada producto deberá estar definida y ser mayor a 0.
 function cantidad (){
-    if (cantidad.value < 0) {
+    if (cantidad.value <= 0) {
         alert ('La cantidad del producto esta en 0');
-    } else {
-        if (prod.value === ''){
-            alert('No está definida la cantidad de su producto')
-        }
+        return false;
     }
+    return true;
 }
 
 function validacion (){
     if (direccion () && formadepago() && formenvio () && cantidad){
-        alert ('Su compra se realizó exitosamente')
+        alert ('Su compra se realizó exitosamente');
     }
 }
 
-btnCompra.addEventListener('click', validacion ());
+btnCompra.addEventListener('click', validacion);
 
 }); 
