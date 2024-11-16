@@ -136,6 +136,7 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
         subtotal.removeChild(subtotal.firstChild);
         subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*inputCant.value));
         agregarBadges();
+        actualizarCostos ();
     }
     
 
@@ -181,6 +182,41 @@ function agregarBadges() {
   }
 
 
+
+
+ // actualiza costo total según subtotal y tipo de envío
+function actualizarCostos() {
+    const subtotal = calcularSubtotal(); // calcula subtotal de todos los productos en el carrito
+    const costoEnvio = calcularCostoEnvio(subtotal); // calcula costo de envío según opción elegida
+    const total = subtotal + costoEnvio;
+  
+    document.getElementById("subtotal").textContent = "$" + subtotal.toFixed(2); // solo dos decimales
+    document.getElementById("costo-envio").textContent = "$" + costoEnvio.toFixed(2);
+    document.getElementById("costo-total").textContent = "$" + total.toFixed(2);
+}
+  
+function calcularSubtotal() {
+    const productos = JSON.parse(localStorage.getItem("carrito")) || [];
+    return productos.reduce((total, producto) => total + ((producto.cantidad || 1) * producto.cost), 0);
+}
+
+  
+function calcularCostoEnvio(subtotal) {
+    const tipoEnvio = document.querySelector('input[name="tipo-envio"]:checked').value;
+    let porcentaje = 0;
+  
+    if (tipoEnvio === "premium") porcentaje = 0.15;
+    else if (tipoEnvio === "express") porcentaje = 0.07;
+    else if (tipoEnvio === "standard") porcentaje = 0.05;
+  
+    return subtotal * porcentaje;
+}
+  
+  document.querySelectorAll('input[name="tipo-envio"]').forEach(input => {
+    input.addEventListener('change', actualizarCostos);
+});
+
+actualizarCostos ();
 });
 
 
