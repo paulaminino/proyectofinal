@@ -448,3 +448,21 @@ background-color: transparent;
   }
 }
 
+/*Estilos boton borrar en cart*/
+
+.borrarProducto {
+  background-color: orange; 
+  color: white; 
+  font-size: larger;
+  min-width: 18%;
+  padding: 4px 18px;
+  border-radius: 50px;
+  cursor: pointer; 
+  border: none;
+}
+
+#botonBorrar {
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+}
