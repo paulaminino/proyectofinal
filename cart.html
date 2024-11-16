@@ -35,15 +35,16 @@
       </div>
     </div>
   </nav>
-
   <main>
     <div class="text-center p-4">
       <h2>Mi Carrito</h2>
       <p class="lead">Verás aquí los productos seleccionados para comprar.</p>
     </div>
-
-    <!--Productos-->
-    <div class="catalogo">
+    <div class="catalogo" >
+      <div id="productosAComprar"></div>
+    </div>
+     <!--Productos-->
+     <div class="catalogo">
       <div id="productos"></div>
     </div>
 
@@ -97,9 +98,7 @@
     <div class="container">
       <button class="btn-finalizar-compra" id="finalizar-compra">Finalizar compra</button>
     </div>
-
   </main>
-
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -108,11 +107,19 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/tools-user.js"></script>
+
 </body>
 
 </html>
