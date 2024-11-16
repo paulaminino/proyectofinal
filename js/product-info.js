@@ -316,12 +316,13 @@ if (localStorage.getItem("modo")){
 function comprarProducto() {
 
 let productoID = localStorage.getItem("prodID");
+let productoCost = localStorage.getItem("prodCost");
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []; // trae un arreglo de objetos con sus ID y cantidades
 if (!Array.isArray(carrito)) { // que si no existe, lo crea. En esta línea verifica que sea un arreglo
   carrito = [];
   }
   if (!carrito.find(item => item.id === productoID)){ // Si el producto no es parte del arreglo, lo agrega con -push
-    carrito.push({ id: productoID, cantidad: 1 });
+    carrito.push({ id: productoID, cantidad: 1, cost: productoCost});
   }
   localStorage.setItem("carrito", JSON.stringify(carrito)); // Se actualiza la información en Local Storage
   localStorage.setItem("CantCarrito", 1); // El carrito no está vacío

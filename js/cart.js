@@ -158,9 +158,8 @@ function agregarBadges() {
   }
 
 
-});
 
-// actualiza costo total según subtotal y tipo de envío
+ // actualiza costo total según subtotal y tipo de envío
 function actualizarCostos() {
     const subtotal = calcularSubtotal(); // calcula subtotal de todos los productos en el carrito
     const costoEnvio = calcularCostoEnvio(subtotal); // calcula costo de envío según opción elegida
@@ -191,3 +190,9 @@ function calcularCostoEnvio(subtotal) {
   document.querySelectorAll('input[name="tipo-envio"]').forEach(input => {
     input.addEventListener('change', actualizarCostos);
 });
+
+actualizarCostos ();
+
+});
+
+
