@@ -72,7 +72,7 @@ function formadepago (){
 }
 
 // La cantidad para cada producto deberá estar definida y ser mayor a 0.
-function cantidad (){
+function cantidadProd (){
     const cantidades = document.querySelectorAll('input[id^="cantidad"]');
     for (const cantidad of cantidades) {
         if (cantidad.value <= 0 || isNaN(cantidad.value)) {
@@ -85,7 +85,7 @@ function cantidad (){
 }
 
 function validacion (){
-    if (direccion () && formadepago() && formenvio () && cantidad()){
+    if (direccion () && formadepago() && formenvio () && cantidadProd()){
         alert ('Su compra se realizó exitosamente');
         return false;
     }
