@@ -21,7 +21,7 @@ function showData (dataArray) {
         let prod = document.createElement("div");
         prod.className = "producto";
         prod.classList.add ("row");
-        prod.addEventListener('click', () => setProdID(item.id));
+        prod.addEventListener('click', () => setProdID(item.id, item.cost));
             let imagen = document.createElement ("img");
             imagen.className = "img";
             imagen.classList.add ("col-lg-4");
@@ -176,8 +176,9 @@ document.getElementById("sortByCount").addEventListener("click", ordenrelev);
 mostrarProductos();
 
 /*INICIO Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
-function setProdID(id) {
+function setProdID(id, cost) {
   localStorage.setItem("prodID", id);
+  localStorage.setItem("prodCost", cost);
 
   
 
