@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-const cantidad = document.getElementById('cantidad50921');
 const departamento = document.getElementById('departamento');
 const localidad = document.getElementById('localidad');
 const calle = document.getElementById('calle');
 const num = document.getElementById('numero-puerta');
 const esquina = document.getElementById('esquina');
 const btnCompra = document.getElementById('finalizar-compra');
-
 
 
 // Los campos asociados a la dirección no podrán estar vacíos
@@ -16,13 +14,15 @@ function direccion() {
     
     if (departamento.value === '') { 
     departamento.setCustomValidity('Debe ingresar un departamento'); 
+    departamento.reportValidity();
     isValid = false; 
 } else { 
     departamento.setCustomValidity(''); 
 } 
 
 if (localidad.value === '') { 
-    localidad.setCustomValidity('Debe ingresar una localidad'); 
+    localidad.setCustomValidity('Debe ingresar una localidad');
+    localidad.reportValidity(); 
     isValid = false; 
 } else { 
     localidad.setCustomValidity(''); 
@@ -30,18 +30,21 @@ if (localidad.value === '') {
 
 if (calle.value === '') { 
     calle.setCustomValidity('Debe ingresar una calle'); 
+    calle.reportValidity();
     isValid = false; 
 } else { 
     calle.setCustomValidity(''); 
 } 
 if (num.value === '') { 
-    num.setCustomValidity('Debe ingresar el número de puerta'); 
+    num.setCustomValidity('Debe ingresar el número de puerta');
+    num.reportValidity();
     isValid = false; 
 } else { 
     num.setCustomValidity('');
  } 
  if (esquina.value === '') { 
     esquina.setCustomValidity('Debe ingresar el nombre de la calle de la esquina'); 
+    esquina.reportValidity();
     isValid = false; 
 } else { 
     esquina.setCustomValidity(''); 
@@ -69,16 +72,20 @@ function formadepago (){
 }
 
 // La cantidad para cada producto deberá estar definida y ser mayor a 0.
-function cant (){
-    if (cantidad.value <= 0) {
-        alert ('La cantidad del producto esta en 0');
-        return false;
+function cantidad (){
+    const cantidades = document.querySelectorAll('input[id^="cantidad"]');
+    for (const cantidad of cantidades) {
+        if (cantidad.value <= 0 || isNaN(cantidad.value)) {
+            alert('La cantidad del producto está en 0');
+            return false;
+        }
+        
     }
     return true;
 }
 
 function validacion (){
-    if (direccion () && formadepago() && formenvio () && cant()){
+    if (direccion () && formadepago() && formenvio () && cantidad()){
         alert ('Su compra se realizó exitosamente');
         return false;
     }
