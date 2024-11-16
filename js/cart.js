@@ -109,6 +109,7 @@ function MostrarProductosCarro (){
         subtotal.removeChild(subtotal.firstChild);
         subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*inputCant.value));
         agregarBadges();
+        actualizarCostos ();
     }
     
 
