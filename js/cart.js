@@ -43,13 +43,6 @@ function MostrarProductosCarro (){
                 costo.appendChild(document.createTextNode(item.currency + " " + item.cost));
                 textodiv.appendChild(costo);
 
-
-                /*textodiv.innerHTML += `<form action=>
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad${item.id}" onchange = "guardarCant(${item.id})" name="cantidad" min="0"placeholder="1">
-                <button class="btn" type="button" id="guardarCant">Guardar</button>
-                </form>`*/
-
                 let titulocant = document.createElement("div"); /* Texto Cantidad: -------------------- !!*/
                 titulocant.className = "descripcion"
                 titulocant.appendChild(document.createTextNode("Cantidad:"));
@@ -120,7 +113,7 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
             contenedorTodo.innerHTML = "";
             MostrarProductosCarro ();
             agregarBadges();
-            console.log(nuevoarreglo.length);
+            actualizarCostos ();
             if (nuevoarreglo.length == 0){
                 localStorage.setItem("CantCarrito", 0);
             }
