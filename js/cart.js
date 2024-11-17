@@ -104,8 +104,6 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
         
         function borrarProducto (arreglo, id) {
             let producto = arreglo.find(producto => producto.id == id);
-            console.log(id);
-            console.log(producto)
             let nuevoarreglo = arreglo.filter(elemento => elemento != producto);
             console.log(localStorage.getItem("carrito"));
             localStorage.setItem("carrito", JSON.stringify(nuevoarreglo));
