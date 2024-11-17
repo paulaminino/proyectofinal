@@ -448,3 +448,117 @@ background-color: transparent;
   }
 }
 
+/* estilos cart */
+
+h4 {
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #F09100;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.tab-button:hover {
+  background-color: #d07c00;
+}
+
+.row-pago-costos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.col {
+  flex: 1;
+}
+
+.div-tipo-envio label,
+.label-pago {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.div-tipo-envio input,
+.input-pago {
+  margin-right: 10px;
+}
+
+#form-direccion {
+  margin-top: 30px;
+}
+
+.div-direccion {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-finalizar-compra {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  background-color: #F09100;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-finalizar-compra:hover {
+  background-color: #d07c00;
+}
+
+@media (max-width: 768px) {
+  .row-pago-costos {
+    flex-direction: column;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  h4 {
+    font-size: 20px;
+  }
+
+  .tab-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/*Estilos boton borrar en cart*/
+
+.borrarProducto {
+  background-color: orange; 
+  color: white; 
+  font-size: larger;
+  min-width: 18%;
+  padding: 4px 18px;
+  border-radius: 50px;
+  cursor: pointer; 
+  border: none;
+}
+
+#botonBorrar {
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+}

@@ -26,7 +26,7 @@ function MostrarProductosCarro (){
         prod.appendChild(dvimg);
 
             let textodiv = document.createElement("div"); /* div para todo texto */
-            textodiv.className = "col-lg-7";             
+            textodiv.className = "col-lg-5";             
 
                 let nombre = document.createElement("div");
                 nombre.className = "nombreproducto";
@@ -70,10 +70,8 @@ function MostrarProductosCarro (){
                 input.onchange = function() {
                     guardarCant(input.id, item.id);
                };
-               
 
-
-                 let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
+                let titulosubtotal = document.createElement("div"); /* Texto Subtotal: -------------------- !!*/
                 titulosubtotal.className = "tituloproducto"
                 titulosubtotal.appendChild(document.createTextNode("Subtotal:"));
                 textodiv.appendChild(titulosubtotal); 
@@ -84,22 +82,51 @@ function MostrarProductosCarro (){
                 let sub = item.cost*cant;
                 subtotal.appendChild(document.createTextNode(item.currency + " " + sub));
                 textodiv.appendChild(subtotal);
-/*
+                prod.appendChild(textodiv);
 
 
 
-*/
+/*INICIO BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/
 
+        let botondiv = document.createElement("div"); /* div para todo texto */
+        botondiv.className = "col-lg-2";  
+        let botonBorrar = document.createElement("button");
+        botonBorrar.id = "botonBorrar";
+        botonBorrar.className = "borrarProducto";
+        let textoBoton = document.createTextNode("Borrar");
+        botonBorrar.appendChild(textoBoton);
+        botondiv.appendChild(botonBorrar);
+        prod.appendChild(botondiv);
 
-        prod.appendChild(textodiv);
-    contenedorTodo.appendChild(prod);
+        contenedorTodo.appendChild(prod);
 
-    /*let inputCant = document.getElementById("cantidad");
-    if (localStorage.getItem ("cantProd")){
-        inputCant.value = localStorage.getItem ("cantProd");*/
+        /*botonBorrar.addEventListener('click', () => borrarProducto (carrito, producto));*/
+        botonBorrar.addEventListener('click', function() {
+        borrarProducto(carrito, producto.id)});
 
+        /*FIN BOTÓN ELIMINAR PRODUCTO DEL CARRITO*/   
+        
+        /*modificar el arreglo, Actualizar de forma sincrónico, Actualización en tiempo real, modificar subtotales, cantidades
+función tools, se llama en javascript carrito porque cuando se modifican las funciones también se modifica el badge*/
+        
+        function borrarProducto (arreglo, id) {
+            let producto = arreglo.find(producto => producto.id == id);
+            console.log(id);
+            console.log(producto)
+            let nuevoarreglo = arreglo.filter(elemento => elemento != producto);
+            console.log(localStorage.getItem("carrito"));
+            localStorage.setItem("carrito", JSON.stringify(nuevoarreglo));
+            console.log(localStorage.getItem("carrito"));
+            contenedorTodo.innerHTML = "";
+            MostrarProductosCarro ();
+            agregarBadges();
+            console.log(nuevoarreglo.length);
+            if (nuevoarreglo.length == 0){
+                localStorage.setItem("CantCarrito", 0);
+            }
+        }
 
-
+    
     function guardarCant (inputID, productoID) {
         let carrito = JSON.parse(localStorage.getItem("carrito"));
         let inputCant = document.getElementById(inputID);
@@ -109,6 +136,7 @@ function MostrarProductosCarro (){
         subtotal.removeChild(subtotal.firstChild);
         subtotal.appendChild(document.createTextNode(item.currency + " " + item.cost*inputCant.value));
         agregarBadges();
+        actualizarCostos ();
     }
     
 
@@ -142,10 +170,6 @@ function MostrarProductosCarro (){
     }
 }
 
-/*if (!localStorage.getItem ("cantProd")){
-        localStorage.setItem ("cantProd", 1)
-    }
-*/
 
 CarritoVacio ();
 MostrarProductosCarro ();
@@ -158,4 +182,41 @@ function agregarBadges() {
   }
 
 
+
+
+ // actualiza costo total según subtotal y tipo de envío
+function actualizarCostos() {
+    const subtotal = calcularSubtotal(); // calcula subtotal de todos los productos en el carrito
+    const costoEnvio = calcularCostoEnvio(subtotal); // calcula costo de envío según opción elegida
+    const total = subtotal + costoEnvio;
+  
+    document.getElementById("subtotal").textContent = "$" + subtotal.toFixed(2); // solo dos decimales
+    document.getElementById("costo-envio").textContent = "$" + costoEnvio.toFixed(2);
+    document.getElementById("costo-total").textContent = "$" + total.toFixed(2);
+}
+  
+function calcularSubtotal() {
+    const productos = JSON.parse(localStorage.getItem("carrito")) || [];
+    return productos.reduce((total, producto) => total + ((producto.cantidad || 1) * producto.cost), 0);
+}
+
+  
+function calcularCostoEnvio(subtotal) {
+    const tipoEnvio = document.querySelector('input[name="tipo-envio"]:checked').value;
+    let porcentaje = 0;
+  
+    if (tipoEnvio === "premium") porcentaje = 0.15;
+    else if (tipoEnvio === "express") porcentaje = 0.07;
+    else if (tipoEnvio === "standard") porcentaje = 0.05;
+  
+    return subtotal * porcentaje;
+}
+  
+  document.querySelectorAll('input[name="tipo-envio"]').forEach(input => {
+    input.addEventListener('change', actualizarCostos);
 });
+
+actualizarCostos ();
+});
+
+
