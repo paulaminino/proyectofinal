@@ -283,7 +283,7 @@ function setProdID(id) {
 }
 /*FIN Guarda el ID del producto seleccionado en la memoria local y redirige a la página de dicho producto*/
 
-const toggleBtn = document.getElementById('toggle-modonoche');
+/*const toggleBtn = document.getElementById('toggle-modonoche');
 const body = document.body;
 // Función para alternar entre modo claro y oscuro
 
@@ -307,9 +307,7 @@ if (localStorage.getItem("modo")){
   spinnerwrapper.classList.add(localStorage.getItem("modo"));
   spinnerwrapper.classList.remove (localStorage.getItem("modoOpuesto"));
 
-  console.log(body.classList)
-
-};
+};*/
 
 
 

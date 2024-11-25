@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
 const departamento = document.getElementById('departamento');
 const localidad = document.getElementById('localidad');
 const calle = document.getElementById('calle');
 const num = document.getElementById('numero-puerta');
 const esquina = document.getElementById('esquina');
 const btnCompra = document.getElementById('finalizar-compra');
+let contenedorTodo  = document.getElementById("productosAComprar");
 
 
 // Los campos asociados a la dirección no podrán estar vacíos
@@ -87,6 +88,10 @@ function cantidadProd (){
 function validacion (){
     if (direccion () && formadepago() && formenvio () && cantidadProd()){
         alert ('Su compra se realizó exitosamente');
+        localStorage.removeItem("carrito");
+        contenedorTodo.innerHTML = "";
+        agregarBadges();
+        actualizarCostos ();
         return false;
     }
     return true;
@@ -94,4 +99,4 @@ function validacion (){
 
 btnCompra.addEventListener('click', validacion);
 
-}); 
+});*/
