@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let carroVacio = true;
     let contenedorTodo  = document.getElementById("productosAComprar");
+    let contenedorCompra = document.getElementById("compra")
 
 function CarritoVacio (){
     if (!localStorage.getItem("CantCarrito") || localStorage.getItem("CantCarrito") == "" || localStorage.getItem("CantCarrito") == 0){
@@ -115,6 +116,7 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
             actualizarCostos ();
             if (nuevoarreglo.length == 0){
                 localStorage.setItem("CantCarrito", 0);
+                contenedorCompra.innerHTML= "";
             }
         }
 
@@ -187,6 +189,7 @@ function actualizarCostos() {
     document.getElementById("costo-total").textContent = "$" + total.toFixed(2);
 }
   
+if (!carroVacio){
 function calcularSubtotal() {
     const productos = JSON.parse(localStorage.getItem("carrito")) || [];
     return productos.reduce((total, producto) => total + ((producto.cantidad || 1) * producto.cost), 0);
@@ -299,7 +302,9 @@ function validacion (){
     if (direccion () && formadepago() && formenvio () && cantidadProd()){
         alert ('Su compra se realizó exitosamente');
         localStorage.removeItem("carrito");
+        localStorage.setItem("CantCarrito", 0);
         contenedorTodo.innerHTML = "";
+        contenedorCompra.innerHTML= "";
         agregarBadges();
         actualizarCostos ();
         return false;
@@ -308,6 +313,7 @@ function validacion (){
 }
 
 btnCompra.addEventListener('click', validacion);
+};
 });
 
 

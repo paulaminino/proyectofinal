@@ -1,3 +1,7 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -450,8 +454,14 @@ background-color: transparent;
 
 /* estilos cart */
 
-h4 {
-  font-weight: bold;
+.container2{
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  max-width: 100%;
+  margin: 1% 15%;
+  padding: 1%
+
+
 }
 
 .tabs {
@@ -472,39 +482,33 @@ h4 {
 }
 
 .tab-button:hover {
-  background-color: #d07c00;
+  background-color: #F09100;
 }
 
-.row-pago-costos {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 30px;
+
+.div-tipo-envio {
+  display: block;
 }
 
-.col {
-  flex: 1;
-}
-
-.div-tipo-envio label,
-.label-pago {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.div-tipo-envio input,
-.input-pago {
-  margin-right: 10px;
-}
 
 #form-direccion {
   margin-top: 30px;
 }
 
+.input-direccion{
+  width: 90%;  
+  margin: 0.5%;
+}
+
+.costo {
+  color: #F09100;
+  font-weight: bold;
+}
+
 .div-direccion {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  padding: 0 0 3%;
 }
 
 .btn-finalizar-compra {

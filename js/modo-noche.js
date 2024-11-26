@@ -13,6 +13,7 @@ let cardbody = document.getElementById("tarjetas");
 let prodcat = document.getElementById("prodcat");
 let c_producto = document.getElementById("c_producto");
 let productosAComprar = document.getElementById("productosAComprar");
+let contenedorCompra = document.getElementById("compra");
 
 if (localStorage.getItem("modo")){
   body.classList.add (localStorage.getItem("modo"));
@@ -48,6 +49,10 @@ if (localStorage.getItem("modo")){
   if (productosAComprar){
     productosAComprar.classList.add(localStorage.getItem("modo"));
     productosAComprar.classList.remove (localStorage.getItem("modoOpuesto"));
+  }
+  if (contenedorCompra){
+    contenedorCompra.classList.add(localStorage.getItem("modo"));
+    contenedorCompra.classList.remove (localStorage.getItem("modoOpuesto"));
   }
   
   

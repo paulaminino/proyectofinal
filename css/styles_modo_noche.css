@@ -118,6 +118,15 @@ body.dark {
     color: white;
   }
 
+  div.dark .container2 {
+    background-color: #0A1E53;
+  }
+
+  div.dark .btn-finalizar-compra{
+    background-color: #F09100;
+    color: white;
+  }
+
 
 
 
