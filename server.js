@@ -3,13 +3,13 @@ const app = express();
 const cors = require('cors');
 
 // Importar archivos JSON
-const comprar = require('./data/cart/buy.json');
-const categorias = require('./data/cats/cat.json');
-const prodsCat = require('./data/cats_products/');
-const productos = require('./data/products/');
-const comentarios = require('./data/products_comments/');
-const vender = require('./data/sell/publish.json')
-const carrito = require('./data/user_cart/25801.json')
+const comprar = require('data/cart/buy.json');
+const categorias = require('data/cats/cat.json');
+const prodsCat = require('data/cats_products/');
+const productos = require('data/products/');
+const comentarios = require('data/products_comments/');
+const vender = require('data/sell/publish.json')
+const carrito = require('data/user_cart/25801.json')
 
 // Middleware para habilitar CORS (para que el frontend pueda consumir el backend)
 app.use(cors());
