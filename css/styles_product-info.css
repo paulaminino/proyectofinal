@@ -180,4 +180,6 @@
 #botonComprar {
     display: block;
     margin: auto;
+    background-color: orange;
+    color: white; 
 }

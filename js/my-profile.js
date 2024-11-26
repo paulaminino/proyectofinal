@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 toggleBtn.addEventListener('click', () => {
     let modo = cambiarModo ();
     localStorage.setItem("modo", modo);
+    location.reload()
 });
 
 });

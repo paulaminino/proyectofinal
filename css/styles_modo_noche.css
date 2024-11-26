@@ -85,6 +85,39 @@ body.dark {
     color: #0A1E53; 
   }
 
+  div.dark .card{
+    background-color: #0A1E53;
+    color: #ccc;
+  }
+
+  div.dark .list-group{
+    background-color: #051232;
+    color: #ccc;
+  }
+
+  div.dark .list-group-item{
+    background-color: #0A1E53;
+    color: #ccc;
+    border-color: #ccc;
+  }
+
+  div.dark .descripcion {
+    color: #ccc;
+  }
+
+  div.dark .lineaH {
+    background-color: #F09100;
+  }
+
+  div.dark .productoCarrito {
+    color: #ccc
+  }
+
+  div.dark #botonBorrar{
+    background-color: #F09100;
+    color: white;
+  }
+
 
 
 

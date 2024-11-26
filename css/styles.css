@@ -198,7 +198,7 @@ width: auto;
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
+  background-color: #F09100;
   background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
@@ -224,7 +224,7 @@ width: auto;
 
 .jumbotron .container {
   max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #ccc;
   border-radius: 10px;
   text-shadow: 1px 1px 2px grey;
 }
@@ -252,7 +252,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #F09100;
   border-radius: 5px;
   background: white;
 }
@@ -285,7 +285,7 @@ footer p {
 .left {
   float: left;
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #ccc;
 }
 
 .lds-ring div {
@@ -357,13 +357,13 @@ a.custom-card:hover {
 
 /*Comienzan estilos del menú desplegable*/
 #btnmenu {
-background-image: linear-gradient(to right, #6c757d, #adb5bd);
-border: 1px solid #424549;
+background-color: #F09100;
+border: 1px solid #051232;
 border-radius: 5px;
 }
 
 #nom_usuario{
-color: #07090a;
+color: #051232;
 }
 
 #nom_usuario:focus {
@@ -372,8 +372,8 @@ color: #07090a;
 }
 
 .dropdown-menu {
-background-image: linear-gradient(to right, #6c757d, #adb5bd);
-border: 1px solid #424549;
+background-color: #F09100;
+border: 1px solid #F09100;
 border-radius: 6px;
 }
 
@@ -385,7 +385,7 @@ background-color: transparent;
 
 
 .productoCarrito{
-  padding: 0 15%;
+  padding: 5% 15%;
   font-size: 15px; /* Tamaño de fuente para la descripción del producto */
   color: #212529; /* Color gris */
   width: 100%; 
