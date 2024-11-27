@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const fs = require('fs'); 
+const path = require('path'); 
 
 // Importar archivos JSON
 const comprar = require('./data/cart/buy.json');
@@ -12,26 +14,23 @@ const vender = require('./data/sell/publish.json');
 const carrito = require('./data/user_cart/25801.json');
 
 // Para obtener varios archivos json de una misma carpeta - En este caso PRODUCTS_COMMENTS
-const fs = require('fs'); 
-const path = require('path'); 
-
 const comentariosDir = path.join(__dirname, 'data/products_comments'); 
-let comentarios = []; 
+let comments = []; 
 
 fs.readdirSync(comentariosDir).forEach(file => { 
     if (path.extname(file) === '.json') { 
         const comentario = require(path.join(comentariosDir, file)); 
-        comentarios.push(comentario); } 
+        comments.push(comentario); } 
     });
 
 // Para obtener varios archivos json de una misma carpeta - En este caso PRODUCTS
     const products = path.join(__dirname, 'data/products'); 
-let productos = []; 
+let productosData = []; 
 
 fs.readdirSync(products).forEach(file => { 
     if (path.extname(file) === '.json') { 
         const producto = require(path.join(products, file)); 
-        productos.push(producto); } 
+        productosData.push(producto); } 
     });
 
 // Para obtener varios archivos json de una misma carpeta - En este caso CATS_PRODUCTS
