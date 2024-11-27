@@ -11,6 +11,39 @@ const comentarios = require('./data/products_comments/');
 const vender = require('./data/sell/publish.json');
 const carrito = require('./data/user_cart/25801.json');
 
+// Para obtener varios archivos json de una misma carpeta - En este caso PRODUCTS_COMMENTS
+const fs = require('fs'); 
+const path = require('path'); 
+
+const comentariosDir = path.join(__dirname, 'data/products_comments'); 
+let comentarios = []; 
+
+fs.readdirSync(comentariosDir).forEach(file => { 
+    if (path.extname(file) === '.json') { 
+        const comentario = require(path.join(comentariosDir, file)); 
+        comentarios.push(comentario); } 
+    });
+
+// Para obtener varios archivos json de una misma carpeta - En este caso PRODUCTS
+    const products = path.join(__dirname, 'data/products'); 
+let productos = []; 
+
+fs.readdirSync(products).forEach(file => { 
+    if (path.extname(file) === '.json') { 
+        const producto = require(path.join(products, file)); 
+        productos.push(producto); } 
+    });
+
+// Para obtener varios archivos json de una misma carpeta - En este caso CATS_PRODUCTS
+    const catsProductos = path.join(__dirname, 'data/cats_products'); 
+    let cats = []; 
+    
+    fs.readdirSync(catsProductos).forEach(file => { 
+        if (path.extname(file) === '.json') { 
+            const cat = require(path.join(catsProductos, file)); 
+            cats.push(cat); } 
+        });
+
 // Middleware para habilitar CORS (para que el frontend pueda consumir el backend)
 app.use(cors());
 
