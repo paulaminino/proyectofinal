@@ -7,11 +7,19 @@ const path = require('path');
 // Importar archivos JSON
 const comprar = require('./data/cart/buy.json');
 const categorias = require('./data/cats/cat.json');
-const prodsCat = require('./data/cats_products');
-const productos = require('./data/products/');
+async function ImportarCatProd() {
+    const catProds = [];
+    for (let i = 101; i <= 109; i++) {
+        const data = await require(`./data/cats_products/${i}.json`);
+        catProds.push(data);
+    }
+}
+ImportarCatProd ();
+
+/*const productos = require('./data/products/');
 const comentarios = require('./data/products_comments/');
 const vender = require('./data/sell/publish.json');
-const carrito = require('./data/user_cart/25801.json');
+const carrito = require('./data/user_cart/25801.json');*/
 
 // Para obtener varios archivos json de una misma carpeta - En este caso PRODUCTS_COMMENTS
 const comentariosDir = path.join(__dirname, 'data/products_comments'); 
