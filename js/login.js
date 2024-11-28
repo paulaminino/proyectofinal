@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-function redirect() {
+/*function redirect() {
     window.location.href = "index.html";
-}
+}*/
 
 const boton = document.getElementById("ingresoBtn");
 
