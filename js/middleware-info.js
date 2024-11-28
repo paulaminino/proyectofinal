@@ -1,3 +1,5 @@
+/*
+
 // el middleware de autorizacion verifica si un usuario tiene un token valido antes de permitir el acceso a algunas rutas o recursos. Para la pauta 4: -verificar que el token JWT esté en la solicitud, verificar que sea válido y no haya expirado.
 
 const jwt = require('jsonwebtoken'); // importamos la libreria
@@ -32,3 +34,5 @@ app.get('/people', authenticate, (req, res) => {
   });
   
 };
+
+*/
