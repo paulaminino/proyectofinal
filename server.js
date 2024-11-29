@@ -6,47 +6,6 @@ const path = require('path');
 // Importar archivos JSON
 const comprar = require('./data/cart/buy.json');
 const categorias = require('./data/cats/cat.json');
-
-const catProds = [];
-async function ImportarCatProd(catProds) {
-    for (let i = 101; i <= 109; i++) {
-        const data = await require(`./data/cats_products/${i}.json`);
-        catProds.push(data);
-    }
-}
-ImportarCatProd (catProds);
-
-const p40281 = require('./data/products/40281.json');
-const p50741 = require('./data/products/50741.json');
-const p50742 = require('./data/products/50742.json');
-const p50743 = require('./data/products/50743.json');
-const p50744 = require('./data/products/50744.json');
-const p50921 = require('./data/products/50921.json');
-const p50922 = require('./data/products/50922.json');
-const p50923 = require('./data/products/50923.json');
-const p50924 = require('./data/products/50924.json');
-const p50925 = require('./data/products/50925.json');
-const p60801 = require('./data/products/60801.json');
-const p60802 = require('./data/products/60802.json');
-const p60803 = require('./data/products/60803.json');
-const p60804 = require('./data/products/60804.json');
-
-const c40281 = require('./data/products_comments/40281.json');
-const c50741 = require('./data/products_comments/50741.json');
-const c50742 = require('./data/products_comments/50742.json');
-const c50743 = require('./data/products_comments/50743.json');
-const c50744 = require('./data/products_comments/50744.json');
-const c50921 = require('./data/products_comments/50921.json');
-const c50922 = require('./data/products_comments/50922.json');
-const c50923 = require('./data/products_comments/50923.json');
-const c50924 = require('./data/products_comments/50924.json');
-const c50925 = require('./data/products_comments/50925.json');
-const c60801 = require('./data/products_comments/60801.json');
-const c60802 = require('./data/products_comments/60802.json');
-const c60803 = require('./data/products_comments/60803.json');
-const c60804 = require('./data/products_comments/60804.json');
-
-
 const vender = require('./data/sell/publish.json');
 const carrito = require('./data/user_cart/25801.json');
 
