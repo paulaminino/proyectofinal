@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "authorize": "^0.0.1",
     "cors": "^2.8.5",
     "db": "^6.0.3",
     "express": "^4.21.1",

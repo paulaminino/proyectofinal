@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const mariadb = require('mariadb');
 const cors = require('cors');
-const authorize = require('authorize');
+let authorize = require('authorize');
 
 const pool = mariadb.createPool({
   host: "localhost", 
@@ -16,7 +16,7 @@ const SECRET = 'CLAVE_SECRETTA';
 const port = 3000; 
 
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors()); // Permite solicitudes CORS 
 
@@ -42,7 +42,7 @@ app.post("/login", async (req, res) =>{
 
 });
 
-const authorize = (req, res, next) => { // req: solicitud, res: respuesta, next: funcion que pasa el control al siguiente middleware o ruta y si no se llama se frena el flujo de la solicitud.
+authorize = (req, res, next) => { // req: solicitud, res: respuesta, next: funcion que pasa el control al siguiente middleware o ruta y si no se llama se frena el flujo de la solicitud.
 
   const token = req.headers['authorization']; // se obtiene el token del header de la solicitud
 
