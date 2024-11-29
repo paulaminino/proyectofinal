@@ -1,7 +1,10 @@
 let categoria = localStorage.getItem("catID");
 let contenedor  = document.getElementById("c_producto");
 let titulocat  = document.getElementById("tipocategoria");
-let DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+/*let DATA_URL = `https://japceibal.github.io/emercado-api/cats_products/${categoria}.json`; // URL que contiene los datos que queremos mostrar
+*/
+let DATA_URL = `http://localhost:3000/categoriesProd/${categoria}`;
+console.log(DATA_URL);
 
 function crearinformacion (DATA_URL) {
 showtitulo(DATA_URL);
