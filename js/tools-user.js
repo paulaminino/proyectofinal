@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const dropdown = document.getElementById('btnmenu'); //Constante para traer el id donde se va a cargar el menú desplegable. 
 
 /*Se crea el menú desplegable: Entrega 5*/
-if (localStorage.getItem("usuario")){
+if (localStorage.getItem('usuario')){
     let menuHTML = `
     <div class="dropdown" >
     <button class="nav-link btn dropdown-toggle autoClose" id="nom_usuario"  href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">

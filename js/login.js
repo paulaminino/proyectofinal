@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+/*document.addEventListener("DOMContentLoaded", function(){
 
 function redirect() {
     window.location.href = "index.html";
@@ -45,4 +45,4 @@ function show (){
 
 boton.addEventListener('click', show);
 
-});
+});*/

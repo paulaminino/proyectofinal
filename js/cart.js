@@ -155,7 +155,8 @@ función tools, se llama en javascript carrito porque cuando se modifican las fu
     if (!carroVacio) {
         let arregloProd = JSON.parse(localStorage.getItem("carrito"));
         for (idProductoCarrito of arregloProd){
-            let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito.id}.json`; 50921
+           /* let DATA_URL = `https://japceibal.github.io/emercado-api/products/${idProductoCarrito.id}.json`;*/
+                let DATA_URL = `http://localhost:3000/products/${idProductoCarrito.id}`;
             mostrarProductosC (DATA_URL);
         }
         

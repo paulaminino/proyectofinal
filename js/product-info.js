@@ -3,8 +3,10 @@ let slideIndex = 1;
 
 /*INICIO leectura JSON*/
 let ID_PROD = localStorage.getItem("prodID");
-const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
-
+/*const DATA_URL = `https://japceibal.github.io/emercado-api/products/${ID_PROD}.json`; // URL que contiene los datos que queremos mostrar
+*/
+const DATA_URL = `http://localhost:3000/products/${ID_PROD}`;
+console.log(DATA_URL);
 
 const contenedorTodo  = document.getElementById("div_contenedorTodo"); /*YA LO AGREGUÉ EN HTML*/
 const calificacionesycomentarios = document.getElementById("div_calificacionesycomentarios"); 
@@ -176,7 +178,8 @@ post.addEventListener ("click", function() {
 // Comentarios
 
 let PRODUCT_ID = localStorage.getItem("prodID");
-const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; 
+/*const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`; */
+const COMMENTS_URL = `http://localhost:3000/products_comments/${PRODUCT_ID}`;
 
 function showComments(comments) {
   let titulocalificacion = document.createElement("div");
