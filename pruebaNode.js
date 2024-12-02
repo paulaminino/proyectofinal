@@ -64,6 +64,6 @@ app.use("/products", (req, res, next) =>{
 
 // Iniciar servidor 
 app.listen(port, () => { 
-console.log(`Servidor escuchando en el puerto ${port}`);
+console.log(`Servidor escuchando en el puerto: ${port}`);
 
 });
