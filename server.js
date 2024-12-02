@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const cors = require('cors');
 const path = require('path'); 
@@ -92,7 +92,7 @@ app.get('/user_cart/:userId', (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+});*/
 
 
 
