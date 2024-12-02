@@ -1,20 +1,22 @@
 {
+ 
+  "name": "proyectofinal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node pruebaNode.js"
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "express": "^4.21.1"
     "authorize": "^0.0.1",
     "cors": "^2.8.5",
     "db": "^6.0.3",
-    "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "maria": "^0.0.1-a",
     "mariadb": "^3.4.0"
   },
-  "name": "proyectofinal",
-  "version": "1.0.0",
-  "main": "pruebaNode.js",
-  "scripts": {
-    "test": "node pruebaNode.js"
-  },
-  "author": "",
-  "license": "ISC",
   "description": ""
 }
